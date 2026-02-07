@@ -136,7 +136,7 @@ export default function Galerie() {
     {
       id: 12,
       type: "video",
-      src: "/video/%23PURPLEHAZEBEATZ%20Visual%20effect%20by%20%40LEDREVM.Mp4",
+      src: "/video/PURPLEHAZEBEATZ Visual effect by @LEDREVM.Mp4",
       title: "PURPLEHAZEBEATZ - Visual Effect",
       date: "2024",
       description: "Effets visuels par @LEDREVM - Purple Haze Beatz",
