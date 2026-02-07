@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/Layout";
 
 export default function Galerie() {
@@ -118,13 +117,11 @@ export default function Galerie() {
               onClick={() => openLightbox(photo)}
             >
               {/* Image */}
-              <div className="relative aspect-[4/5] bg-gray-200">
-                <Image
+              <div className="relative aspect-[4/5] bg-gray-200 overflow-hidden">
+                <img
                   src={photo.src}
                   alt={photo.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
 
@@ -224,13 +221,11 @@ export default function Galerie() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Image */}
-            <div className="flex-1 relative w-full h-[60vh] md:h-[80vh]">
-              <Image
+            <div className="flex-1 relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center">
+              <img
                 src={selectedPhoto.src}
                 alt={selectedPhoto.title}
-                fill
-                className="object-contain"
-                quality={100}
+                className="max-w-full max-h-full object-contain"
               />
             </div>
 

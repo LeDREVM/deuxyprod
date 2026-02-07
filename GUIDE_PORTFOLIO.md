@@ -97,20 +97,22 @@ Page d'accueil présentant :
 
 ### Méthode Simple
 
-1. **Ajoutez votre photo** dans le dossier `/photo/`
+1. **Ajoutez votre photo** dans le dossier `/public/photo/`
    ```
-   /photo/
+   /public/photo/
    ├── 20240111-IMG_9907.jpg
    ├── 20240106-IMG_9743.jpg
    ├── 20240318-IMG_0949.jpg
    └── votre-nouvelle-photo.jpg  ← Ici
    ```
+   
+   **⚠️ IMPORTANT :** Les photos doivent être dans `/public/photo/` et non `/photo/` !
 
 2. **Éditez le fichier** `/data/photos.js`
    ```javascript
    {
      id: 4,  // Incrémentez l'ID
-     src: "/photo/votre-nouvelle-photo.jpg",
+     src: "/photo/votre-nouvelle-photo.jpg",  // Le chemin commence par /photo/
      title: "Titre de Votre Photo",
      date: "01 Février 2024",
      description: "Description détaillée de la photo",
@@ -126,6 +128,27 @@ Page d'accueil présentant :
    ```
 
 3. **Sauvegardez** et rechargez la page !
+
+### Organisation des Photos
+
+**Structure correcte :**
+```
+deuxyprod/
+├── public/              ← Fichiers accessibles publiquement
+│   ├── photo/          ← VOS PHOTOS ICI
+│   │   ├── 20240111-IMG_9907.jpg
+│   │   ├── 20240106-IMG_9743.jpg
+│   │   └── 20240318-IMG_0949.jpg
+│   └── images/         ← Autres images (logos, etc.)
+├── photo/              ← NE PAS UTILISER (ancien dossier)
+└── data/
+    └── photos.js       ← Configuration
+```
+
+**Pourquoi `/public/photo/` ?**
+- Next.js sert les fichiers statiques depuis `/public/`
+- Le chemin `/photo/image.jpg` dans le code pointe vers `/public/photo/image.jpg`
+- C'est la structure standard de Next.js
 
 ### Catégories Disponibles
 - `studio` : Photos de studio, musique, production
@@ -260,9 +283,16 @@ vercel
 ### Les images ne s'affichent pas
 
 **Solution :** Vérifiez que :
-- Les images sont bien dans `/photo/`
-- Le chemin dans `photos.js` est correct : `/photo/nom-fichier.jpg`
-- Next.js a `images: { unoptimized: true }` dans `next.config.js`
+- ✅ Les images sont bien dans `/public/photo/` (pas `/photo/`)
+- ✅ Le chemin dans `photos.js` est correct : `/photo/nom-fichier.jpg`
+- ✅ Next.js a `images: { unoptimized: true }` dans `next.config.js`
+- ✅ Le nom du fichier correspond exactement (respectez majuscules/minuscules)
+
+**Erreur commune :**
+```
+❌ Mauvais : /photo/image.jpg mais fichier dans /photo/
+✅ Correct : /photo/image.jpg avec fichier dans /public/photo/
+```
 
 ### La navigation ne fonctionne pas
 
@@ -299,12 +329,15 @@ deuxyprod/
 │   └── PortfolioNav.js           # Navigation entre vues
 ├── data/
 │   └── photos.js                 # Configuration des photos
-├── photo/
-│   └── *.jpg                     # Vos photos
+├── public/                       # ⭐ Fichiers statiques
+│   ├── photo/                    # ⭐ VOS PHOTOS ICI
+│   │   ├── 20240111-IMG_9907.jpg
+│   │   ├── 20240106-IMG_9743.jpg
+│   │   └── 20240318-IMG_0949.jpg
+│   └── images/                   # Autres images (logos, etc.)
 ├── styles/
 │   └── globals.css               # Styles globaux
-└── public/
-    └── images/                   # Images publiques
+└── photo/                        # ⚠️ Ancien dossier (ne pas utiliser)
 ```
 
 ---
