@@ -64,6 +64,28 @@ export default function Home() {
               </div>
             </div>
           </SwiperSlide>
+
+          {/* Slide 3 - Portfolio */}
+          <SwiperSlide>
+            <div
+              className="flex items-center justify-center h-screen bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/photo/20240106-IMG_9743.jpg')",
+              }}
+            >
+              <div className="text-white text-center bg-black/50 p-12 rounded-lg backdrop-blur-sm">
+                <h1 className="text-5xl font-bold mb-4">
+                  Portfolio
+                </h1>
+                <p className="text-lg mb-6">Découvrez notre univers visuel</p>
+                <Link href="/portfolio">
+                  <button className="bg-white text-black px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-gray-200 transition">
+                    Voir le Portfolio
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
     </>

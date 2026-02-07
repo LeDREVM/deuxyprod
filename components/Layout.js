@@ -36,6 +36,26 @@ export default function Layout({ children, title }) {
                   Espaces Verts & Bâtiment
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/portfolio"
+                  className={`hover:text-gray-300 ${
+                    title === "Portfolio" ? "font-bold" : ""
+                  }`}
+                >
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/galerie"
+                  className={`hover:text-gray-300 ${
+                    title === "Galerie" ? "font-bold" : ""
+                  }`}
+                >
+                  Galerie
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

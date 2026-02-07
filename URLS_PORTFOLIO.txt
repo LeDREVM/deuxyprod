@@ -1,0 +1,192 @@
+═══════════════════════════════════════════════════════════════
+  📸 PORTFOLIO DEUXYPROD - URLS DISPONIBLES
+═══════════════════════════════════════════════════════════════
+
+🏠 PAGE D'ACCUEIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/
+→ Page d'accueil avec 3 slides (dont 1 pour le portfolio)
+
+
+📊 PORTFOLIO - VUE SLIDES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/portfolio
+
+✨ Fonctionnalités :
+   • Transitions en fondu élégantes
+   • Navigation : flèches, clavier (← →), molette
+   • Pagination cliquable
+   • Compteur de slides
+   • Informations détaillées
+
+🎯 Idéal pour : Présentations professionnelles
+
+
+🖼️ PORTFOLIO - MODE PLEIN ÉCRAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/portfolio-fullscreen
+
+✨ Fonctionnalités :
+   • Expérience immersive sans distraction
+   • Touche "I" pour toggle infos
+   • Métadonnées complètes (ISO, ouverture, appareil)
+   • Tags thématiques
+   • Miniatures de navigation
+
+🎯 Idéal pour : Apprécier les détails des photos
+
+
+📐 GALERIE - VUE GRILLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/galerie
+
+✨ Fonctionnalités :
+   • Grille responsive (1-3 colonnes)
+   • Filtres par catégorie (Tout, Studio, Portrait, Lifestyle)
+   • Lightbox intégré
+   • Navigation dans le lightbox
+   • Hover effects
+
+🎯 Idéal pour : Explorer rapidement toute la collection
+
+
+▶️ DIAPORAMA AUTOMATIQUE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/slideshow
+
+✨ Fonctionnalités :
+   • Lecture automatique
+   • 3 vitesses (3s, 5s, 8s)
+   • Play/Pause
+   • Barre de progression
+   • Masquage auto des contrôles
+
+⌨️ Commandes :
+   • Espace : Play/Pause
+   • ← → : Navigation
+   • Esc : Quitter
+
+🎯 Idéal pour : Présentation automatique
+
+
+🏡 PAGE D'ACCUEIL PORTFOLIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+http://localhost:3000/portfolio-index
+
+✨ Fonctionnalités :
+   • Présentation générale du portfolio
+   • Statistiques (photos, catégories, vues)
+   • Sélecteur de mode de visualisation
+   • Aperçu des 3 photos
+   • Liens vers toutes les vues
+
+🎯 Idéal pour : Point d'entrée principal
+
+
+═══════════════════════════════════════════════════════════════
+  ⌨️ NAVIGATION CLAVIER
+═══════════════════════════════════════════════════════════════
+
+TOUTES LES VUES :
+   ← → : Navigation entre les photos
+
+MODE PLEIN ÉCRAN :
+   I : Afficher/masquer les informations
+
+DIAPORAMA :
+   Espace : Play/Pause
+   Esc : Quitter
+
+LIGHTBOX (GALERIE) :
+   Esc : Fermer
+
+
+═══════════════════════════════════════════════════════════════
+  📱 ACCÈS DEPUIS LA NAVIGATION
+═══════════════════════════════════════════════════════════════
+
+Menu principal (en haut de page) :
+   • Accueil
+   • Directeur Artistique
+   • Espaces Verts & Bâtiment
+   • Portfolio ← NOUVEAU
+   • Galerie ← NOUVEAU
+
+
+═══════════════════════════════════════════════════════════════
+  🚀 DÉMARRAGE RAPIDE
+═══════════════════════════════════════════════════════════════
+
+1. Lancer le serveur :
+   npm run dev
+
+2. Ouvrir le navigateur :
+   http://localhost:3000
+
+3. Accéder au portfolio :
+   • Cliquez sur "Portfolio" dans le menu
+   • Ou allez directement sur /portfolio
+
+
+═══════════════════════════════════════════════════════════════
+  📸 VOS PHOTOS
+═══════════════════════════════════════════════════════════════
+
+Photo 1 : Studio Session (11 Jan 2024)
+   → /photo/20240111-IMG_9907.jpg
+   → Catégorie : Studio
+   → Tags : Studio, Musique, Production
+
+Photo 2 : Street Portrait (06 Jan 2024)
+   → /photo/20240106-IMG_9743.jpg
+   → Catégorie : Portrait
+   → Tags : Portrait, Street, Urbain
+
+Photo 3 : Urban Lifestyle (18 Mars 2024)
+   → /photo/20240318-IMG_0949.jpg
+   → Catégorie : Lifestyle
+   → Tags : Lifestyle, Culture, Street
+
+
+═══════════════════════════════════════════════════════════════
+  📚 DOCUMENTATION
+═══════════════════════════════════════════════════════════════
+
+DEMARRAGE_RAPIDE.md    → Guide de démarrage (3 minutes)
+GUIDE_PORTFOLIO.md     → Guide utilisateur complet
+PORTFOLIO.md           → Documentation technique
+README_PORTFOLIO.md    → Vue d'ensemble complète
+FICHIERS_CREES.md      → Liste de tous les fichiers
+RESUME_PORTFOLIO.md    → Résumé du développement
+URLS_PORTFOLIO.txt     → Ce fichier
+
+
+═══════════════════════════════════════════════════════════════
+  🎯 RECOMMANDATIONS
+═══════════════════════════════════════════════════════════════
+
+Pour une présentation professionnelle :
+   → /slideshow (diaporama automatique)
+
+Pour explorer rapidement :
+   → /galerie (vue grille avec filtres)
+
+Pour apprécier les détails :
+   → /portfolio-fullscreen (mode immersif)
+
+Pour une navigation fluide :
+   → /portfolio (vue slides)
+
+
+═══════════════════════════════════════════════════════════════
+  📞 CONTACT
+═══════════════════════════════════════════════════════════════
+
+Email      : contact@deuxyprod.com
+Instagram  : @ledrevm
+Photographe: @ledrevm
+
+
+═══════════════════════════════════════════════════════════════
+  © 2024 DeuxyProd - Tous droits réservés
+═══════════════════════════════════════════════════════════════
