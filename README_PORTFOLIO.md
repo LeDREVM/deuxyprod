@@ -472,7 +472,7 @@ Pour contribuer au projet :
 
 ## 📞 Contact
 
-- **Email :** contact@deuxyprod.com
+- **Email :** longvichy@gmail.com
 - **Instagram :** @ledrevm
 - **Site Web :** [URL du site]
 

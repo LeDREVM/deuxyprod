@@ -36,6 +36,51 @@ export default function PortfolioFullscreen() {
       location: "Espace public",
       camera: "Appareil argentique",
       tags: ["Lifestyle", "Culture", "Street"]
+    },
+    {
+      src: "/photo/20231029-IMG_8587.jpg",
+      title: "Session Octobre",
+      date: "29 Octobre 2023",
+      description: "Capture artistique - L'essence du moment",
+      location: "Extérieur",
+      camera: "Appareil argentique",
+      tags: ["Lifestyle", "Artistique", "Automne"]
+    },
+    {
+      src: "/photo/20240106-IMG_9753.jpg",
+      title: "Street Session",
+      date: "06 Janvier 2024",
+      description: "Ambiance urbaine - La rue comme toile de fond",
+      location: "Environnement urbain",
+      camera: "Appareil argentique",
+      tags: ["Portrait", "Street", "Urbain"]
+    },
+    {
+      src: "/photo/20240107-IMG_9789.jpg",
+      title: "Urban Vibes",
+      date: "07 Janvier 2024",
+      description: "L'énergie de la ville capturée",
+      location: "Environnement urbain",
+      camera: "Appareil argentique",
+      tags: ["Portrait", "Urban", "Vibes"]
+    },
+    {
+      src: "/photo/IMG_8396.JPG",
+      title: "Artistic Shot",
+      date: "2023",
+      description: "Capture artistique - Vision créative",
+      location: "Studio",
+      camera: "Appareil argentique",
+      tags: ["Studio", "Artistique", "Création"]
+    },
+    {
+      src: "/photo/IMG_8400.JPG",
+      title: "Creative Portrait",
+      date: "2023",
+      description: "Portrait créatif - L'art du cadrage",
+      location: "Studio",
+      camera: "Appareil argentique",
+      tags: ["Studio", "Portrait", "Créatif"]
     }
   ];
 

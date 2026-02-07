@@ -104,7 +104,7 @@ export default function DirecteurArtistique() {
             {t("da.ctaText")}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <a href="mailto:contact@deuxyprod.com" className="btn-neon btn-neon-filled text-sm px-6 py-2.5">
+            <a href="mailto:longvichy@gmail.com" className="btn-neon btn-neon-filled text-sm px-6 py-2.5">
               {t("da.ctaContact")}
             </a>
             <a href="/portfolio" className="btn-neon btn-neon-cyan text-sm px-6 py-2.5">

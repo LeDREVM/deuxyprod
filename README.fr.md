@@ -291,7 +291,7 @@ Les contributions sont les bienvenues !
 
 ## 📞 Contact
 
-- **Email** : contact@deuxyprod.com
+- **Email** : longvichy@gmail.com
 - **Instagram** : [@ledrevm](https://instagram.com/ledrevm)
 - **Photographe** : @ledrevm
 

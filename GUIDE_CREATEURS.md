@@ -147,7 +147,7 @@ achievements: [
 ```javascript
 socials: {
   instagram: "https://instagram.com/monsieurr",
-  email: "monsieurr@deuxyprod.com",
+  email: "longvichy@gmail.com",
   website: "https://monsieurr.com"  // Optionnel
 },
 ```
@@ -234,7 +234,7 @@ className="... border-4 border-gray-200 ..."
   ],
   socials: {
     instagram: "https://instagram.com/pseudo",
-    email: "email@deuxyprod.com"
+    email: "longvichy@gmail.com"
   },
   featured: true
 }
@@ -303,7 +303,7 @@ Page Direction Artistique
 
 ```javascript
 socials: {
-  email: "nouveau-email@deuxyprod.com"
+  email: "longvichy@gmail.com"
 }
 ```
 
@@ -372,7 +372,7 @@ import { creators } from "../data/creators";
 ## 📞 Contact
 
 Pour toute question sur la section créateurs :
-- 📧 Email : contact@deuxyprod.com
+- 📧 Email : longvichy@gmail.com
 - 📸 Instagram : @ledrevm
 
 ---

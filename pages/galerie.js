@@ -10,6 +10,7 @@ export default function Galerie() {
   const videoRef = useRef(null);
 
   const media = [
+    // === PHOTOS ===
     {
       id: 1,
       type: "photo",
@@ -45,36 +46,103 @@ export default function Galerie() {
     },
     {
       id: 4,
+      type: "photo",
+      src: "/photo/20231029-IMG_8587.jpg",
+      title: "Session Octobre",
+      date: "29 Octobre 2023",
+      description: "Capture artistique - L'essence du moment",
+      location: "Extérieur",
+      category: "lifestyle",
+      tags: ["Lifestyle", "Artistique", "Automne"]
+    },
+    {
+      id: 5,
+      type: "photo",
+      src: "/photo/20240106-IMG_9753.jpg",
+      title: "Street Session",
+      date: "06 Janvier 2024",
+      description: "Ambiance urbaine - La rue comme toile de fond",
+      location: "Environnement urbain",
+      category: "portrait",
+      tags: ["Portrait", "Street", "Urbain"]
+    },
+    {
+      id: 6,
+      type: "photo",
+      src: "/photo/20240107-IMG_9789.jpg",
+      title: "Urban Vibes",
+      date: "07 Janvier 2024",
+      description: "L'énergie de la ville capturée",
+      location: "Environnement urbain",
+      category: "portrait",
+      tags: ["Portrait", "Urban", "Vibes"]
+    },
+    {
+      id: 7,
+      type: "photo",
+      src: "/photo/IMG_8396.JPG",
+      title: "Artistic Shot",
+      date: "2023",
+      description: "Capture artistique - Vision créative",
+      location: "Studio",
+      category: "studio",
+      tags: ["Studio", "Artistique", "Création"]
+    },
+    {
+      id: 8,
+      type: "photo",
+      src: "/photo/IMG_8400.JPG",
+      title: "Creative Portrait",
+      date: "2023",
+      description: "Portrait créatif - L'art du cadrage",
+      location: "Studio",
+      category: "studio",
+      tags: ["Studio", "Portrait", "Créatif"]
+    },
+    // === VIDÉOS ===
+    {
+      id: 9,
       type: "video",
       src: "/video/video_1_7f880a3118bf43d9b7bd5f71705749ba.mp4",
       title: "Behind The Scenes #1",
       date: "2024",
-      description: "Coulisses de production",
+      description: "Coulisses de production - Immersion créative",
       location: "Studio",
       category: "video",
       tags: ["Vidéo", "BTS", "Production"]
     },
     {
-      id: 5,
+      id: 10,
       type: "video",
       src: "/video/video_1_958cfa975feb4e529520339adeec186b.mp4",
       title: "Behind The Scenes #2",
       date: "2024",
-      description: "Coulisses de production",
+      description: "Processus créatif - L'art en mouvement",
       location: "Studio",
       category: "video",
       tags: ["Vidéo", "BTS", "Production"]
     },
     {
-      id: 6,
+      id: 11,
       type: "video",
       src: "/video/video_1_a47edae80c094eb98f204890c674100d.mp4",
       title: "Behind The Scenes #3",
       date: "2024",
-      description: "Coulisses de production",
+      description: "Capturer l'instant - L'énergie du live",
+      location: "Extérieur",
+      category: "video",
+      tags: ["Vidéo", "BTS", "Live"]
+    },
+    {
+      id: 12,
+      type: "video",
+      src: "/video/%23PURPLEHAZEBEATZ%20Visual%20effect%20by%20%40LEDREVM.Mp4",
+      title: "PURPLEHAZEBEATZ - Visual Effect",
+      date: "2024",
+      description: "Effets visuels par @LEDREVM - Purple Haze Beatz",
       location: "Studio",
       category: "video",
-      tags: ["Vidéo", "BTS", "Production"]
+      tags: ["Vidéo", "Visual", "PURPLEHAZEBEATZ"]
     },
   ];
 

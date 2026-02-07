@@ -356,7 +356,7 @@ npm run dev
 
 ## 📞 Contact
 
-- 📧 **Email :** contact@deuxyprod.com
+- 📧 **Email :** longvichy@gmail.com
 - 📸 **Instagram :** @ledrevm
 - 🌐 **Site :** [URL du site]
 

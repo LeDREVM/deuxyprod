@@ -41,7 +41,7 @@ Direction Artistique avec les profils de MonsieurR et LeDREVM.
                 Identité Visuelle, Projets Culturels, Rap & Hip-Hop
    Photo      : À ajouter (/images/monsieurr.jpg)
    Instagram  : @monsieurr
-   Email      : monsieurr@deuxyprod.com
+   Email      : longvichy@gmail.com
 
 2. LEDREVM
    ────────────
@@ -50,7 +50,7 @@ Direction Artistique avec les profils de MonsieurR et LeDREVM.
                 Direction Photo, Identité Visuelle, Culture Hip-Hop
    Photo      : ✅ Déjà configurée
    Instagram  : @ledrevm
-   Email      : ledrevm@deuxyprod.com
+   Email      : longvichy@gmail.com
 
 
 ═══════════════════════════════════════════════════════════════

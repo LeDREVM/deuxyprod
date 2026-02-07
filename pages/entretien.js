@@ -77,7 +77,7 @@ export default function Entretien() {
           <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm">
             {t("entretien.ctaText")}
           </p>
-          <a href="mailto:contact@deuxyprod.com" className="btn-neon btn-neon-lime text-sm px-6 py-2.5">
+          <a href="mailto:longvichy@gmail.com" className="btn-neon btn-neon-lime text-sm px-6 py-2.5">
             {t("entretien.ctaButton")}
           </a>
         </section>

@@ -218,7 +218,7 @@ npm run dev
 
 ## 📞 Besoin d'Aide ?
 
-- 📧 Email : contact@deuxyprod.com
+- 📧 Email : longvichy@gmail.com
 - 📸 Instagram : @ledrevm
 - 📚 Documentation : Voir les fichiers `.md`
 

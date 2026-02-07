@@ -382,7 +382,7 @@ git push
 ## 📞 Support
 
 Pour toute question ou problème :
-- 📧 Email : contact@deuxyprod.com
+- 📧 Email : longvichy@gmail.com
 - 📸 Instagram : @ledrevm
 - 📝 Documentation complète : `PORTFOLIO.md`
 

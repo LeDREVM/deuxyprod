@@ -329,7 +329,7 @@ git push
 - `DEMARRAGE_RAPIDE.md` - Démarrage en 3 minutes
 
 **Support :**
-- 📧 Email : contact@deuxyprod.com
+- 📧 Email : longvichy@gmail.com
 - 📸 Instagram : @ledrevm
 
 ---

@@ -46,6 +46,71 @@ export const photos = [
     tags: ["Lifestyle", "Culture", "Street"],
     featured: true,
     orientation: "landscape"
+  },
+  {
+    id: 4,
+    src: "/photo/20231029-IMG_8587.jpg",
+    title: "Session Octobre",
+    date: "29 Octobre 2023",
+    description: "Capture artistique - L'essence du moment",
+    location: "Extérieur",
+    category: "lifestyle",
+    camera: "Appareil argentique",
+    tags: ["Lifestyle", "Artistique", "Automne"],
+    featured: false,
+    orientation: "portrait"
+  },
+  {
+    id: 5,
+    src: "/photo/20240106-IMG_9753.jpg",
+    title: "Street Session",
+    date: "06 Janvier 2024",
+    description: "Ambiance urbaine - La rue comme toile de fond",
+    location: "Environnement urbain",
+    category: "portrait",
+    camera: "Appareil argentique",
+    tags: ["Portrait", "Street", "Urbain"],
+    featured: false,
+    orientation: "portrait"
+  },
+  {
+    id: 6,
+    src: "/photo/20240107-IMG_9789.jpg",
+    title: "Urban Vibes",
+    date: "07 Janvier 2024",
+    description: "L'énergie de la ville capturée",
+    location: "Environnement urbain",
+    category: "portrait",
+    camera: "Appareil argentique",
+    tags: ["Portrait", "Urban", "Vibes"],
+    featured: false,
+    orientation: "portrait"
+  },
+  {
+    id: 7,
+    src: "/photo/IMG_8396.JPG",
+    title: "Artistic Shot",
+    date: "2023",
+    description: "Capture artistique - Vision créative",
+    location: "Studio",
+    category: "studio",
+    camera: "Appareil argentique",
+    tags: ["Studio", "Artistique", "Création"],
+    featured: false,
+    orientation: "portrait"
+  },
+  {
+    id: 8,
+    src: "/photo/IMG_8400.JPG",
+    title: "Creative Portrait",
+    date: "2023",
+    description: "Portrait créatif - L'art du cadrage",
+    location: "Studio",
+    category: "studio",
+    camera: "Appareil argentique",
+    tags: ["Studio", "Portrait", "Créatif"],
+    featured: false,
+    orientation: "portrait"
   }
 ];
 
@@ -64,7 +129,7 @@ export const portfolioMeta = {
   description: "Collection de photographies en noir et blanc capturant l'essence de la culture urbaine et musicale",
   copyright: "© 2024 DeuxyProd. Tous droits réservés.",
   contact: {
-    email: "contact@deuxyprod.com",
+    email: "longvichy@gmail.com",
     instagram: "@ledrevm"
   }
 };

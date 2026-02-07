@@ -25,7 +25,7 @@ export const creators = [
     ],
     socials: {
       instagram: "https://instagram.com/monsieurr",
-      email: "monsieurr@deuxyprod.com",
+      email: "longvichy@gmail.com",
       website: null
     },
     featured: true
@@ -53,7 +53,7 @@ export const creators = [
     ],
     socials: {
       instagram: "https://instagram.com/ledrevm",
-      email: "ledrevm@deuxyprod.com",
+      email: "longvichy@gmail.com",
       website: null
     },
     featured: true
@@ -62,11 +62,11 @@ export const creators = [
 
 // Métadonnées de l'équipe
 export const teamMeta = {
-  name: "DeuxyProd",
+  name: "OfVision",
   tagline: "Deux visions, une créativité",
   description: "Une équipe créative composée de deux talents complémentaires : MonsieurR et LeDREVM. Ensemble, ils forment un duo artistique unique qui allie production musicale, photographie et direction artistique.",
-  email: "contact@deuxyprod.com",
-  founded: "2024"
+  email: "longvichy@gmail.com",
+  founded: "2015"
 };
 
 // Fonctions utilitaires
