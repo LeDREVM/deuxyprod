@@ -56,6 +56,16 @@ export default function Layout({ children, title }) {
                   Galerie
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/creations"
+                  className={`hover:text-gray-300 ${
+                    title === "Créations" ? "font-bold" : ""
+                  }`}
+                >
+                  Créations
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
