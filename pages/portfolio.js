@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,22 +42,33 @@ export default function Portfolio() {
         <meta name="description" content="Portfolio photographique DeuxyProd" />
       </Head>
 
-      <div className="w-screen h-screen bg-black overflow-hidden relative">
-        {/* Header avec compteur */}
-        <div className="absolute top-0 left-0 right-0 z-50 p-8">
-          <div className="flex justify-between items-center text-white">
-            <a href="/" className="text-2xl font-bold hover:text-gray-300 transition">
+      <div className="w-screen h-screen bg-tropical-dark overflow-hidden relative">
+        {/* Background orbs */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="tropical-orb tropical-orb-cyan w-[400px] h-[400px] -top-48 -right-48 opacity-30" />
+          <div className="tropical-orb tropical-orb-magenta w-[300px] h-[300px] bottom-0 -left-48 opacity-30" />
+        </div>
+
+        {/* Header */}
+        <div className="absolute top-0 left-0 right-0 z-50 p-5">
+          <div className="flex justify-between items-center">
+            <Link href="/" className="text-lg font-bold text-gradient-tropical hover:opacity-80 transition">
               DeuxyProd
-            </a>
-            <div className="text-lg font-light">
-              <span className="text-3xl font-bold">{String(activeIndex + 1).padStart(2, '0')}</span>
-              <span className="text-gray-400 mx-2">/</span>
-              <span className="text-gray-400">{String(photos.length).padStart(2, '0')}</span>
+            </Link>
+            <div className="flex items-center gap-4">
+              <div className="text-sm font-light text-white">
+                <span className="text-2xl font-bold text-tropical-cyan">{String(activeIndex + 1).padStart(2, '0')}</span>
+                <span className="text-gray-600 mx-1">/</span>
+                <span className="text-gray-600">{String(photos.length).padStart(2, '0')}</span>
+              </div>
+              <Link href="/galerie" className="btn-neon btn-neon-cyan text-[10px] px-3 py-1">
+                Galerie
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Swiper Gallery */}
+        {/* Swiper */}
         <Swiper
           modules={[Navigation, Pagination, EffectFade, Keyboard, Mousewheel]}
           effect="fade"
@@ -70,48 +81,38 @@ export default function Portfolio() {
             bulletClass: 'swiper-pagination-bullet-custom',
             bulletActiveClass: 'swiper-pagination-bullet-active-custom',
           }}
-          keyboard={{
-            enabled: true,
-          }}
-          mousewheel={{
-            forceToAxis: true,
-          }}
+          keyboard={{ enabled: true }}
+          mousewheel={{ forceToAxis: true }}
           speed={800}
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           className="w-full h-full"
         >
           {photos.map((photo, index) => (
             <SwiperSlide key={index}>
-              <div className="relative w-full h-full flex items-center justify-center bg-black">
-                {/* Image principale */}
+              <div className="relative w-full h-full flex items-center justify-center bg-tropical-dark">
                 <div className="relative w-full h-full flex items-center justify-center">
-                  <Image
+                  <img
                     src={photo.src}
                     alt={photo.title}
-                    fill
-                    className="object-contain"
-                    priority={index === 0}
-                    quality={95}
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
 
-                {/* Overlay gradient pour le texte */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/90 via-transparent to-tropical-dark/40 pointer-events-none" />
 
-                {/* Informations de la photo */}
-                <div className="absolute bottom-0 left-0 right-0 p-12 text-white z-10">
-                  <div className="max-w-4xl">
-                    <div className="text-sm uppercase tracking-widest text-gray-400 mb-2">
+                {/* Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white z-10">
+                  <div className="max-w-3xl">
+                    <div className="text-[10px] uppercase tracking-widest text-tropical-cyan/60 mb-2">
                       {photo.date}
                     </div>
-                    <h2 className="text-5xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-2 glow-text-cyan">
                       {photo.title}
                     </h2>
-                    <p className="text-xl text-gray-300 mb-2">
-                      {photo.description}
-                    </p>
-                    <p className="text-sm text-gray-500 uppercase tracking-wide">
-                      {photo.location}
+                    <p className="text-gray-400 text-sm mb-1">{photo.description}</p>
+                    <p className="text-[10px] text-gray-600 uppercase tracking-wide">
+                      📍 {photo.location}
                     </p>
                   </div>
                 </div>
@@ -120,72 +121,25 @@ export default function Portfolio() {
           ))}
         </Swiper>
 
-        {/* Navigation personnalisée */}
-        <button className="swiper-button-prev-custom absolute left-8 top-1/2 -translate-y-1/2 z-50 text-white hover:text-gray-300 transition group">
-          <div className="flex items-center">
-            <svg 
-              className="w-12 h-12 transform group-hover:-translate-x-2 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-            </svg>
-          </div>
+        {/* Custom Navigation */}
+        <button className="swiper-button-prev-custom absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-50 text-gray-400 hover:text-tropical-cyan transition group p-2">
+          <svg className="w-8 h-8 md:w-10 md:h-10 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
 
-        <button className="swiper-button-next-custom absolute right-8 top-1/2 -translate-y-1/2 z-50 text-white hover:text-gray-300 transition group">
-          <div className="flex items-center">
-            <svg 
-              className="w-12 h-12 transform group-hover:translate-x-2 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
+        <button className="swiper-button-next-custom absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 text-gray-400 hover:text-tropical-cyan transition group p-2">
+          <svg className="w-8 h-8 md:w-10 md:h-10 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
 
-        {/* Instructions de navigation */}
-        <div className="absolute bottom-8 right-8 z-50 text-white text-sm opacity-50">
-          <div className="flex items-center space-x-4">
-            <span>← → Naviguer</span>
-            <span>•</span>
-            <span>Molette</span>
-          </div>
+        {/* Instructions */}
+        <div className="absolute bottom-4 right-4 z-50 text-gray-600 text-[10px]">
+          <span>← → Naviguer</span>
+          <span className="mx-1">•</span>
+          <span>Molette</span>
         </div>
-
-        {/* Styles personnalisés pour la pagination */}
-        <style jsx global>{`
-          .swiper-pagination {
-            bottom: 40px !important;
-            left: 50% !important;
-            transform: translateX(-50%);
-            width: auto !important;
-          }
-
-          .swiper-pagination-bullet-custom {
-            width: 40px;
-            height: 3px;
-            border-radius: 0;
-            background: rgba(255, 255, 255, 0.3);
-            opacity: 1;
-            margin: 0 8px !important;
-            transition: all 0.3s ease;
-          }
-
-          .swiper-pagination-bullet-active-custom {
-            background: white;
-            width: 60px;
-          }
-
-          .swiper-button-prev-custom:disabled,
-          .swiper-button-next-custom:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-          }
-        `}</style>
       </div>
     </>
   );

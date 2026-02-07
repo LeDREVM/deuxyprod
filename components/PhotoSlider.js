@@ -1,60 +1,38 @@
 import React from "react";
-import Image from "next/image";
 
 export default function PhotoSlider({ photo, isActive }) {
   return (
     <div className={`relative w-full h-full transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-      {/* Image avec effet de zoom subtil */}
       <div className="relative w-full h-full overflow-hidden">
-        <div className={`relative w-full h-full transform transition-transform duration-[8000ms] ${isActive ? 'scale-105' : 'scale-100'}`}>
-          <Image
+        <div className={`relative w-full h-full transform transition-transform duration-[8000ms] flex items-center justify-center ${isActive ? 'scale-105' : 'scale-100'}`}>
+          <img
             src={photo.src}
             alt={photo.title}
-            fill
-            className="object-contain"
-            quality={95}
+            className="max-w-full max-h-full object-contain"
           />
         </div>
       </div>
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/90 via-transparent to-tropical-dark/40 pointer-events-none" />
 
-      {/* Métadonnées de la photo */}
-      <div className={`absolute bottom-0 left-0 right-0 p-12 text-white z-10 transform transition-all duration-1000 ${
+      <div className={`absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white z-10 transform transition-all duration-1000 ${
         isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`}>
-        <div className="max-w-4xl">
-          {/* Badge de date */}
-          <div className="inline-block mb-4">
-            <div className="text-xs uppercase tracking-widest text-gray-400 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+        <div className="max-w-3xl">
+          <div className="inline-block mb-3">
+            <span className="text-[10px] uppercase tracking-widest text-tropical-cyan/60 bg-tropical-cyan/5 px-2.5 py-1 rounded-full border border-tropical-cyan/10">
               {photo.date}
-            </div>
+            </span>
           </div>
-          
-          {/* Titre avec animation */}
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-            {photo.title}
-          </h2>
-          
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-3 font-light">
-            {photo.description}
-          </p>
-          
-          {/* Localisation */}
-          <div className="flex items-center text-sm text-gray-400 uppercase tracking-wide">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            {photo.location}
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 glow-text-cyan">{photo.title}</h2>
+          <p className="text-gray-400 text-sm mb-2">{photo.description}</p>
+          <div className="flex items-center text-xs text-gray-500">
+            <span>📍 {photo.location}</span>
           </div>
         </div>
       </div>
 
-      {/* Watermark discret */}
-      <div className="absolute top-8 right-8 text-white/30 text-sm font-light tracking-widest">
+      <div className="absolute top-6 right-6 text-tropical-cyan/20 text-xs font-light tracking-widest">
         @ledrevm
       </div>
     </div>

@@ -17,16 +17,21 @@ export const playlists = [
       }
     ]
   },
-  // Ajoutez d'autres playlists ici
-  // {
-  //   id: 2,
-  //   title: "Nouvelle Playlist",
-  //   description: "Description de la playlist",
-  //   playlistId: "VOTRE_PLAYLIST_ID",
-  //   thumbnail: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg",
-  //   category: "video",
-  //   videos: []
-  // }
+  {
+    id: 2,
+    title: "NO TIME - TIITII NBA x DJ SKAYLONE",
+    description: "NO TIME feat DJ SKAYLONE - Bouyon 2026",
+    playlistId: "PLniFU1EmwtN8TvGH_T_6uRaoZFUJPCpHe",
+    thumbnail: "https://img.youtube.com/vi/qvmxC0Izumo/maxresdefault.jpg",
+    category: "musique",
+    videos: [
+      {
+        id: "qvmxC0Izumo",
+        title: "NO TIME - TIITII NBA x DJ SKAYLONE",
+        description: "NO TIME feat DJ SKAYLONE - Bouyon 2026"
+      }
+    ]
+  },
 ];
 
 export const featuredVideos = [
@@ -37,21 +42,20 @@ export const featuredVideos = [
     thumbnail: "https://img.youtube.com/vi/HaC_CaTa-UU/maxresdefault.jpg",
     category: "musique"
   },
-  // Ajoutez d'autres vidéos en vedette ici
-  // {
-  //   id: "VIDEO_ID",
-  //   title: "Titre de la vidéo",
-  //   description: "Description",
-  //   thumbnail: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg",
-  //   category: "video"
-  // }
+  {
+    id: "qvmxC0Izumo",
+    title: "NO TIME - TIITII NBA x DJ SKAYLONE",
+    description: "NO TIME feat DJ SKAYLONE - Bouyon 2026",
+    thumbnail: "https://img.youtube.com/vi/qvmxC0Izumo/maxresdefault.jpg",
+    category: "musique"
+  },
 ];
 
 // Informations de la chaîne YouTube
 export const channelInfo = {
   name: "@ledrevm",
   url: "https://www.youtube.com/@ledrevm",
-  description: "Chaîne officielle de DeuxyProd"
+  description: "Chaîne officielle de OfVision"
 };
 
 // Catégories disponibles

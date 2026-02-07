@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function PortfolioFullscreen() {
@@ -62,14 +61,12 @@ export default function PortfolioFullscreen() {
     }
   };
 
-  // Navigation au clavier
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight") goToNext();
       if (e.key === "ArrowLeft") goToPrev();
       if (e.key === "i" || e.key === "I") setShowInfo(!showInfo);
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentIndex, isTransitioning, showInfo]);
@@ -83,30 +80,29 @@ export default function PortfolioFullscreen() {
         <meta name="description" content="Portfolio photographique DeuxyProd" />
       </Head>
 
-      <div className="w-screen h-screen bg-black overflow-hidden relative">
-        {/* Header minimaliste */}
-        <header className={`absolute top-0 left-0 right-0 z-50 p-6 transition-opacity duration-300 ${showInfo ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="flex justify-between items-center text-white">
-            <Link href="/" className="text-xl font-bold hover:text-gray-300 transition flex items-center group">
-              <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="w-screen h-screen bg-tropical-dark overflow-hidden relative">
+        {/* Header */}
+        <header className={`absolute top-0 left-0 right-0 z-50 p-5 transition-opacity duration-300 ${showInfo ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="flex justify-between items-center">
+            <Link href="/" className="text-lg font-bold text-gradient-tropical hover:opacity-80 transition flex items-center group">
+              <svg className="w-4 h-4 mr-2 text-tropical-cyan transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               DeuxyProd
             </Link>
-            
-            <div className="flex items-center space-x-8">
-              <div className="text-sm font-light">
-                <span className="text-2xl font-bold">{String(currentIndex + 1).padStart(2, '0')}</span>
-                <span className="text-gray-500 mx-2">/</span>
-                <span className="text-gray-500">{String(photos.length).padStart(2, '0')}</span>
+
+            <div className="flex items-center gap-4">
+              <div className="text-sm">
+                <span className="text-xl font-bold text-tropical-cyan">{String(currentIndex + 1).padStart(2, '0')}</span>
+                <span className="text-gray-600 mx-1">/</span>
+                <span className="text-gray-600">{String(photos.length).padStart(2, '0')}</span>
               </div>
-              
               <button
                 onClick={() => setShowInfo(!showInfo)}
-                className="p-2 hover:bg-white/10 rounded-lg transition"
+                className="p-1.5 hover:bg-white/5 rounded-lg transition text-gray-400 hover:text-tropical-cyan"
                 title="Toggle info (I)"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </button>
@@ -114,7 +110,7 @@ export default function PortfolioFullscreen() {
           </div>
         </header>
 
-        {/* Image principale avec transition */}
+        {/* Images */}
         <div className="relative w-full h-full flex items-center justify-center">
           {photos.map((photo, index) => (
             <div
@@ -123,136 +119,84 @@ export default function PortfolioFullscreen() {
                 index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             >
-              <div className="relative w-full h-full">
-                <Image
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
                   src={photo.src}
                   alt={photo.title}
-                  fill
-                  className="object-contain"
-                  priority={index === 0}
-                  quality={95}
+                  className="max-w-full max-h-full object-contain"
                 />
               </div>
             </div>
           ))}
 
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50 pointer-events-none z-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/90 via-transparent to-tropical-dark/50 pointer-events-none z-20" />
         </div>
 
-        {/* Informations de la photo */}
-        <div className={`absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white z-30 transition-all duration-500 ${
+        {/* Info Panel */}
+        <div className={`absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white z-30 transition-all duration-500 ${
           showInfo ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
         }`}>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Colonne gauche - Titre et description */}
-              <div>
-                <div className="inline-block mb-3">
-                  <div className="text-xs uppercase tracking-widest text-gray-400 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
-                    {currentPhoto.date}
-                  </div>
-                </div>
-                
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                  {currentPhoto.title}
-                </h2>
-                
-                <p className="text-lg md:text-xl text-gray-300 mb-4 font-light">
-                  {currentPhoto.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {currentPhoto.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+            <div>
+              <div className="inline-block mb-2">
+                <span className="text-[10px] uppercase tracking-widest text-tropical-cyan/60 bg-tropical-cyan/5 px-2.5 py-1 rounded-full border border-tropical-cyan/10">
+                  {currentPhoto.date}
+                </span>
               </div>
-
-              {/* Colonne droite - Métadonnées */}
-              <div className="flex flex-col justify-end space-y-3 text-sm">
-                <div className="flex items-center text-gray-400">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span>{currentPhoto.location}</span>
-                </div>
-
-                <div className="flex items-center text-gray-400">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span>{currentPhoto.camera}</span>
-                </div>
-
-                <div className="flex items-center text-gray-400">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  <span>@ledrevm</span>
-                </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2 glow-text-cyan">{currentPhoto.title}</h2>
+              <p className="text-gray-400 text-sm mb-3">{currentPhoto.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {currentPhoto.tags.map((tag, i) => (
+                  <span key={i} className="text-[10px] px-2.5 py-1 border border-tropical-cyan/10 rounded-full text-tropical-cyan/50">
+                    #{tag}
+                  </span>
+                ))}
               </div>
+            </div>
+
+            <div className="flex flex-col justify-end space-y-2 text-xs text-gray-500">
+              <div className="flex items-center gap-2">📍 {currentPhoto.location}</div>
+              <div className="flex items-center gap-2">📷 {currentPhoto.camera}</div>
+              <div className="flex items-center gap-2">👤 @ledrevm</div>
             </div>
           </div>
         </div>
 
-        {/* Navigation - Flèches */}
+        {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 text-white hover:text-gray-300 transition group"
+          className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-40 text-gray-500 hover:text-tropical-cyan transition group p-2"
           disabled={isTransitioning}
         >
-          <div className="p-3 hover:bg-white/10 rounded-full transition">
-            <svg 
-              className="w-8 h-8 md:w-10 md:h-10 transform group-hover:-translate-x-1 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-            </svg>
-          </div>
+          <svg className="w-8 h-8 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
 
         <button
           onClick={goToNext}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 text-white hover:text-gray-300 transition group"
+          className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-40 text-gray-500 hover:text-tropical-cyan transition group p-2"
           disabled={isTransitioning}
         >
-          <div className="p-3 hover:bg-white/10 rounded-full transition">
-            <svg 
-              className="w-8 h-8 md:w-10 md:h-10 transform group-hover:translate-x-1 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
+          <svg className="w-8 h-8 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
 
-        {/* Miniatures / Pagination */}
-        <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
+        {/* Pagination dots */}
+        <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
           showInfo ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}>
-          <div className="flex space-x-3 bg-black/50 backdrop-blur-md px-4 py-3 rounded-full border border-white/10">
+          <div className="flex gap-2 bg-tropical-dark/60 backdrop-blur-md px-3 py-2 rounded-full border border-tropical-cyan/10">
             {photos.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 ${
+                className={`transition-all duration-300 rounded-full ${
                   index === currentIndex
-                    ? 'w-12 h-2 bg-white'
-                    : 'w-8 h-2 bg-white/30 hover:bg-white/50'
-                } rounded-full`}
+                    ? 'w-8 h-1.5 bg-tropical-cyan shadow-glow-cyan'
+                    : 'w-5 h-1.5 bg-white/20 hover:bg-white/40'
+                }`}
                 disabled={isTransitioning}
               />
             ))}
@@ -260,12 +204,12 @@ export default function PortfolioFullscreen() {
         </div>
 
         {/* Instructions */}
-        <div className={`absolute bottom-6 right-6 z-40 text-white/40 text-xs transition-opacity duration-300 ${
+        <div className={`absolute bottom-4 right-4 z-40 text-[10px] text-gray-600 transition-opacity duration-300 ${
           showInfo ? 'opacity-100' : 'opacity-0'
         }`}>
-          <div className="flex flex-col items-end space-y-1 bg-black/30 backdrop-blur-sm px-3 py-2 rounded-lg">
-            <span>← → Navigation</span>
-            <span>I Infos</span>
+          <div className="bg-tropical-dark/40 backdrop-blur-sm px-2 py-1.5 rounded-lg space-y-0.5">
+            <div>← → Navigation</div>
+            <div>I Infos</div>
           </div>
         </div>
       </div>
