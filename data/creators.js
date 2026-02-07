@@ -7,7 +7,7 @@ export const creators = [
     name: "MonsieurR",
     title: "Directeur Artistique & Producteur",
     aka: "Monsieur R",
-    photo: null, // Ajoutez le chemin : "/images/monsieurr.jpg"
+    photo: "/images/monsieurr.jpg",
     bio: "Artiste engagé et visionnaire, MonsieurR apporte une dimension unique à chaque projet. Fort d'une expérience riche dans le milieu du rap français et de la production musicale, il allie créativité artistique et conscience sociale.",
     bioExtended: "Sa vision artistique transcende les frontières du conventionnel pour créer des œuvres qui marquent les esprits et portent un message fort. Il excelle dans la création d'identités visuelles percutantes et la direction de projets culturels d'envergure.",
     specialties: [
