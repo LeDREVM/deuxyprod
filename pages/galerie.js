@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Galerie() {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [filter, setFilter] = useState("all");
   const { t } = useLanguage();
+  const videoRef = useRef(null);
 
-  const photos = [
+  const media = [
     {
       id: 1,
+      type: "photo",
       src: "/photo/20240111-IMG_9907.jpg",
       title: "Studio Session",
       date: "11 Janvier 2024",
@@ -21,6 +23,7 @@ export default function Galerie() {
     },
     {
       id: 2,
+      type: "photo",
       src: "/photo/20240106-IMG_9743.jpg",
       title: "Street Portrait",
       date: "06 Janvier 2024",
@@ -31,6 +34,7 @@ export default function Galerie() {
     },
     {
       id: 3,
+      type: "photo",
       src: "/photo/20240318-IMG_0949.jpg",
       title: "Urban Lifestyle",
       date: "18 Mars 2024",
@@ -38,39 +42,73 @@ export default function Galerie() {
       location: "Espace public",
       category: "lifestyle",
       tags: ["Lifestyle", "Culture", "Street"]
-    }
+    },
+    {
+      id: 4,
+      type: "video",
+      src: "/video/video_1_7f880a3118bf43d9b7bd5f71705749ba.mp4",
+      title: "Behind The Scenes #1",
+      date: "2024",
+      description: "Coulisses de production",
+      location: "Studio",
+      category: "video",
+      tags: ["Vidéo", "BTS", "Production"]
+    },
+    {
+      id: 5,
+      type: "video",
+      src: "/video/video_1_958cfa975feb4e529520339adeec186b.mp4",
+      title: "Behind The Scenes #2",
+      date: "2024",
+      description: "Coulisses de production",
+      location: "Studio",
+      category: "video",
+      tags: ["Vidéo", "BTS", "Production"]
+    },
+    {
+      id: 6,
+      type: "video",
+      src: "/video/video_1_a47edae80c094eb98f204890c674100d.mp4",
+      title: "Behind The Scenes #3",
+      date: "2024",
+      description: "Coulisses de production",
+      location: "Studio",
+      category: "video",
+      tags: ["Vidéo", "BTS", "Production"]
+    },
   ];
 
   const categories = [
     { id: "all", label: t("galerie.filterAll"), icon: "✨" },
     { id: "studio", label: t("galerie.filterStudio"), icon: "🎵" },
     { id: "portrait", label: t("galerie.filterPortrait"), icon: "👤" },
-    { id: "lifestyle", label: t("galerie.filterLifestyle"), icon: "🌆" }
+    { id: "lifestyle", label: t("galerie.filterLifestyle"), icon: "🌆" },
+    { id: "video", label: t("galerie.filterVideo"), icon: "🎬" },
   ];
 
-  const filteredPhotos = filter === "all"
-    ? photos
-    : photos.filter(photo => photo.category === filter);
+  const filteredMedia = filter === "all"
+    ? media
+    : media.filter(item => item.category === filter);
 
-  const openLightbox = (photo) => {
-    setSelectedPhoto(photo);
+  const openLightbox = (item) => {
+    setSelectedItem(item);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    setSelectedPhoto(null);
+    setSelectedItem(null);
     document.body.style.overflow = 'auto';
   };
 
   const navigateLightbox = (direction) => {
-    const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id);
+    const currentIndex = media.findIndex(p => p.id === selectedItem.id);
     let newIndex;
     if (direction === 'next') {
-      newIndex = (currentIndex + 1) % photos.length;
+      newIndex = (currentIndex + 1) % media.length;
     } else {
-      newIndex = (currentIndex - 1 + photos.length) % photos.length;
+      newIndex = (currentIndex - 1 + media.length) % media.length;
     }
-    setSelectedPhoto(photos[newIndex]);
+    setSelectedItem(media[newIndex]);
   };
 
   return (
@@ -93,7 +131,7 @@ export default function Galerie() {
 
         {/* Filtres */}
         <div className="flex justify-center mb-10">
-          <div className="glass-card inline-flex p-1 gap-1">
+          <div className="glass-card inline-flex p-1 gap-1 flex-wrap justify-center">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -113,41 +151,68 @@ export default function Galerie() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-          {filteredPhotos.map((photo) => (
+          {filteredMedia.map((item) => (
             <div
-              key={photo.id}
+              key={item.id}
               className="group relative overflow-hidden rounded-2xl cursor-pointer glass-card p-0 border-tropical-cyan/5"
-              onClick={() => openLightbox(photo)}
+              onClick={() => openLightbox(item)}
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <img
-                  src={photo.src}
-                  alt={photo.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+              <div className={`relative ${item.type === "video" ? "aspect-video" : "aspect-[4/5]"} overflow-hidden rounded-2xl`}>
+                {item.type === "video" ? (
+                  <video
+                    src={item.src}
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onMouseEnter={(e) => e.target.play()}
+                    onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                )}
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/95 via-tropical-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                   <h3 className="text-white text-xl font-bold mb-1 glow-text-cyan">
-                    {photo.title}
+                    {item.title}
                   </h3>
-                  <p className="text-gray-300 text-xs mb-2">{photo.description}</p>
+                  <p className="text-gray-300 text-xs mb-2">{item.description}</p>
                   <div className="flex items-center text-tropical-cyan/60 text-[10px]">
-                    <span>{photo.date}</span>
+                    <span>{item.date}</span>
                     <span className="mx-2">•</span>
-                    <span>{photo.location}</span>
+                    <span>{item.location}</span>
                   </div>
                 </div>
+
+                {/* Play icon for videos */}
+                {item.type === "video" && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity duration-300">
+                    <div className="w-14 h-14 rounded-full bg-tropical-dark/60 backdrop-blur-sm flex items-center justify-center border border-tropical-cyan/20">
+                      <svg className="w-6 h-6 text-tropical-cyan ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Badge */}
-              <div className="absolute top-3 right-3 bg-tropical-dark/80 backdrop-blur-md text-tropical-cyan text-[10px] px-2.5 py-1 rounded-full border border-tropical-cyan/20">
-                {photo.category}
+              <div className={`absolute top-3 right-3 backdrop-blur-md text-[10px] px-2.5 py-1 rounded-full border ${
+                item.type === "video"
+                  ? "bg-tropical-magenta/20 text-tropical-magenta border-tropical-magenta/20"
+                  : "bg-tropical-dark/80 text-tropical-cyan border-tropical-cyan/20"
+              }`}>
+                {item.type === "video" ? "🎬 vidéo" : item.category}
               </div>
             </div>
           ))}
         </div>
 
-        {filteredPhotos.length === 0 && (
+        {filteredMedia.length === 0 && (
           <div className="text-center py-20">
             <p className="text-gray-500">{t("galerie.noPhotos")}</p>
           </div>
@@ -168,7 +233,7 @@ export default function Galerie() {
       </div>
 
       {/* Lightbox */}
-      {selectedPhoto && (
+      {selectedItem && (
         <div
           className="fixed inset-0 bg-tropical-dark/95 lightbox-backdrop z-50 flex items-center justify-center"
           onClick={closeLightbox}
@@ -205,29 +270,40 @@ export default function Galerie() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex-1 relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center">
-              <img
-                src={selectedPhoto.src}
-                alt={selectedPhoto.title}
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
+              {selectedItem.type === "video" ? (
+                <video
+                  ref={videoRef}
+                  src={selectedItem.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-w-full max-h-full rounded-lg"
+                />
+              ) : (
+                <img
+                  src={selectedItem.src}
+                  alt={selectedItem.title}
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
+              )}
             </div>
 
             <div className="w-full md:w-72 text-white space-y-4">
-              <div className="text-xs text-tropical-cyan/60 uppercase tracking-widest">{selectedPhoto.date}</div>
-              <h2 className="text-2xl font-bold glow-text-cyan">{selectedPhoto.title}</h2>
-              <p className="text-gray-400 text-sm">{selectedPhoto.description}</p>
+              <div className="text-xs text-tropical-cyan/60 uppercase tracking-widest">{selectedItem.date}</div>
+              <h2 className="text-2xl font-bold glow-text-cyan">{selectedItem.title}</h2>
+              <p className="text-gray-400 text-sm">{selectedItem.description}</p>
 
               <div className="space-y-2 text-xs text-gray-500">
                 <div className="flex items-center gap-2">
-                  <span>📍</span> {selectedPhoto.location}
+                  <span>📍</span> {selectedItem.location}
                 </div>
                 <div className="flex items-center gap-2">
-                  <span>🏷️</span> {selectedPhoto.category}
+                  <span>{selectedItem.type === "video" ? "🎬" : "🏷️"}</span> {selectedItem.category}
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-1.5 pt-2">
-                {selectedPhoto.tags.map((tag, i) => (
+                {selectedItem.tags.map((tag, i) => (
                   <span
                     key={i}
                     className="text-[10px] px-2.5 py-1 border border-tropical-cyan/15 rounded-full text-tropical-cyan/60"

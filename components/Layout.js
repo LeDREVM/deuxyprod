@@ -162,45 +162,18 @@ export default function Layout({ children, title }) {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-tropical-cyan/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Logo */}
-            <div className="text-center md:text-left">
-              <h2 className="text-xl font-bold text-gradient-tropical mb-1">
-                DeuxyProd
-              </h2>
-              <p className="text-xs text-gray-500 uppercase tracking-widest">
-                {t("footer.tagline")}
-              </p>
-            </div>
-
-            {/* Quick Nav */}
-            <nav className="flex flex-wrap justify-center gap-4">
-              {navItems.slice(1).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-xs text-gray-500 hover:text-tropical-cyan transition uppercase tracking-wide"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Copyright */}
-            <div className="text-center md:text-right">
-              <p className="text-xs text-gray-600">
-                &copy; {new Date().getFullYear()} DeuxyProd
-              </p>
-              <p className="text-xs text-gray-700">{t("footer.rights")}</p>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+          <div className="flex flex-wrap justify-center gap-4">
+            {navItems.slice(1).map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[11px] text-gray-600 hover:text-tropical-cyan transition uppercase tracking-wide"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
-
-          {/* Bottom glow line */}
-          <div className="tropical-divider mt-8" />
-          <p className="text-center text-[10px] text-gray-700 mt-4 uppercase tracking-widest">
-            {t("footer.madeWith")}
-          </p>
         </div>
       </footer>
 
