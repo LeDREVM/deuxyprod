@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function HelpModal({ onClose }) {
   const [activeTab, setActiveTab] = useState("navigation");
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -9,10 +11,10 @@ export default function HelpModal({ onClose }) {
   }, []);
 
   const tabs = [
-    { id: "navigation", label: "Navigation", icon: "🧭" },
-    { id: "keyboard", label: "Clavier", icon: "⌨️" },
-    { id: "features", label: "Fonctionnalités", icon: "✨" },
-    { id: "tips", label: "Astuces", icon: "💡" }
+    { id: "navigation", label: t("help.tabNav"), icon: "🧭" },
+    { id: "keyboard", label: t("help.tabKeyboard"), icon: "⌨️" },
+    { id: "features", label: t("help.tabFeatures"), icon: "✨" },
+    { id: "tips", label: t("help.tabTips"), icon: "💡" }
   ];
 
   return (
@@ -28,8 +30,8 @@ export default function HelpModal({ onClose }) {
         <div className="bg-gradient-to-r from-tropical-dark to-tropical-navy p-5 border-b border-tropical-cyan/10">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-xl font-bold text-white">Guide d'Utilisation</h2>
-              <p className="text-xs text-gray-500">Portfolio DeuxyProd</p>
+              <h2 className="text-xl font-bold text-white">{t("help.title")}</h2>
+              <p className="text-xs text-gray-500">{t("help.subtitle")}</p>
             </div>
             <button onClick={onClose} className="p-1.5 hover:bg-white/5 rounded-lg transition text-gray-400 hover:text-tropical-cyan">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,9 +66,9 @@ export default function HelpModal({ onClose }) {
           {activeTab === "navigation" && (
             <div className="space-y-4">
               {[
-                { icon: "🖱️", title: "Souris", items: ["Cliquez sur les flèches", "Molette pour défiler", "Cliquez sur la pagination"] },
-                { icon: "👆", title: "Tactile", items: ["Glissez gauche/droite", "Appuyez sur les flèches", "Pincez pour zoomer"] },
-                { icon: "⌨️", title: "Clavier", items: ["← → pour naviguer", "I pour les infos", "Espace pour play/pause"] },
+                { icon: "🖱️", title: t("help.mouse"), items: t("help.mouseItems") },
+                { icon: "👆", title: t("help.touch"), items: t("help.touchItems") },
+                { icon: "⌨️", title: t("help.keyboard"), items: t("help.keyboardItems") },
               ].map((m, i) => (
                 <div key={i} className="glass-card p-4">
                   <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
@@ -87,10 +89,10 @@ export default function HelpModal({ onClose }) {
           {activeTab === "keyboard" && (
             <div className="space-y-2">
               {[
-                { key: "← →", action: "Navigation", ctx: "Partout" },
-                { key: "I", action: "Toggle infos", ctx: "Plein écran" },
-                { key: "⎵", action: "Play/Pause", ctx: "Diaporama" },
-                { key: "Esc", action: "Quitter", ctx: "Lightbox" },
+                { key: "← →", action: t("help.keyNav"), ctx: t("help.everywhere") },
+                { key: "I", action: t("help.keyToggle"), ctx: t("help.fullscreenCtx") },
+                { key: "⎵", action: t("help.keyPlayPause"), ctx: t("help.slideshowCtx") },
+                { key: "Esc", action: t("help.keyQuit"), ctx: t("help.lightboxCtx") },
               ].map((s, i) => (
                 <div key={i} className="flex items-center justify-between glass-card p-3">
                   <kbd className="px-2 py-1 bg-tropical-cyan/10 text-tropical-cyan rounded text-xs font-mono">{s.key}</kbd>
@@ -104,10 +106,10 @@ export default function HelpModal({ onClose }) {
           {activeTab === "features" && (
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: "🎞️", name: "Slides", url: "/portfolio" },
-                { icon: "🖥️", name: "Plein Écran", url: "/portfolio-fullscreen" },
-                { icon: "🖼️", name: "Grille", url: "/galerie" },
-                { icon: "▶️", name: "Diaporama", url: "/slideshow" },
+                { icon: "🎞️", name: t("help.featureSlides"), url: "/portfolio" },
+                { icon: "🖥️", name: t("help.featureFullscreen"), url: "/portfolio-fullscreen" },
+                { icon: "🖼️", name: t("help.featureGrid"), url: "/galerie" },
+                { icon: "▶️", name: t("help.featureSlideshow"), url: "/slideshow" },
               ].map((v, i) => (
                 <a key={i} href={v.url} className="glass-card p-4 text-center hover:border-tropical-cyan/30 transition">
                   <span className="text-2xl block mb-1">{v.icon}</span>
@@ -121,16 +123,16 @@ export default function HelpModal({ onClose }) {
           {activeTab === "tips" && (
             <div className="space-y-2">
               {[
-                { icon: "🎨", title: "Immersion", desc: "Mode plein écran pour la meilleure expérience" },
-                { icon: "⚡", title: "Navigation rapide", desc: "Le clavier est le plus rapide" },
-                { icon: "🔍", title: "Filtres", desc: "Filtrez par catégorie dans la galerie" },
-                { icon: "📱", title: "Mobile", desc: "Glissez horizontalement sur mobile" },
-              ].map((t, i) => (
+                { icon: "🎨", ...t("help.tipImmersion") },
+                { icon: "⚡", ...t("help.tipFastNav") },
+                { icon: "🔍", ...t("help.tipFilters") },
+                { icon: "📱", ...t("help.tipMobile") },
+              ].map((tip, i) => (
                 <div key={i} className="flex items-start gap-3 glass-card p-3">
-                  <span className="text-xl">{t.icon}</span>
+                  <span className="text-xl">{tip.icon}</span>
                   <div>
-                    <h4 className="text-xs font-bold text-white">{t.title}</h4>
-                    <p className="text-[10px] text-gray-500">{t.desc}</p>
+                    <h4 className="text-xs font-bold text-white">{tip.title}</h4>
+                    <p className="text-[10px] text-gray-500">{tip.desc}</p>
                   </div>
                 </div>
               ))}
@@ -142,7 +144,7 @@ export default function HelpModal({ onClose }) {
         <div className="border-t border-tropical-cyan/10 p-4 flex justify-between items-center">
           <span className="text-[10px] text-gray-600">📸 @ledrevm</span>
           <button onClick={onClose} className="btn-neon btn-neon-cyan text-[10px] px-4 py-1.5">
-            Fermer
+            {t("help.close")}
           </button>
         </div>
       </div>

@@ -1,32 +1,35 @@
 import React from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Entretien() {
+  const { t } = useLanguage();
+
   const services = [
-    { icon: "🌿", title: "Entretien d'espaces verts", desc: "Entretien régulier et soigné de vos jardins" },
-    { icon: "✂️", title: "Taille de haies", desc: "Taille précise de haies et arbustes" },
-    { icon: "🌱", title: "Tonte de pelouse", desc: "Tonte régulière pour un gazon impeccable" },
-    { icon: "🏠", title: "Entretien bâtiment", desc: "Nettoyage et entretien de bâtiments" },
-    { icon: "🔧", title: "Réparations", desc: "Petites réparations et rénovations" },
-    { icon: "🌳", title: "Aménagement paysager", desc: "Création d'espaces verts sur mesure" },
+    { icon: "🌿", title: t("entretien.services.green.title"), desc: t("entretien.services.green.desc") },
+    { icon: "✂️", title: t("entretien.services.hedge.title"), desc: t("entretien.services.hedge.desc") },
+    { icon: "🌱", title: t("entretien.services.lawn.title"), desc: t("entretien.services.lawn.desc") },
+    { icon: "🏠", title: t("entretien.services.building.title"), desc: t("entretien.services.building.desc") },
+    { icon: "🔧", title: t("entretien.services.repairs.title"), desc: t("entretien.services.repairs.desc") },
+    { icon: "🌳", title: t("entretien.services.landscaping.title"), desc: t("entretien.services.landscaping.desc") },
   ];
 
   return (
     <>
       <Head>
-        <title>DeuxyProd - Espaces Verts & Bâtiment</title>
-        <meta name="description" content="Services d'entretien d'espaces verts et bâtiment" />
+        <title>{t("entretien.metaTitle")}</title>
+        <meta name="description" content={t("entretien.metaDesc")} />
       </Head>
-      <Layout title="Espaces Verts & Bâtiment">
+      <Layout title={t("entretien.title")}>
         {/* Hero */}
         <section className="mb-20 animate-fade-in-up">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient-neon">Espaces Verts & Bâtiment</span>
+              <span className="text-gradient-neon">{t("entretien.title")}</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Entretenir, Rénover, Sublimer — Des espaces impeccables et fonctionnels
+              {t("entretien.subtitle")}
             </p>
           </div>
 
@@ -35,19 +38,16 @@ export default function Entretien() {
               <div className="absolute -inset-1 bg-gradient-to-r from-tropical-lime/20 to-tropical-cyan/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
               <img
                 src="/images/entretien-espaces-verts.jpg"
-                alt="Entretien d'espaces verts"
+                alt={t("entretien.title")}
                 className="relative rounded-2xl w-full h-auto shadow-2xl"
               />
             </div>
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                Entretenir, Rénover, <span className="text-tropical-lime">Sublimer</span>
+                {t("entretien.heroTitle")} <span className="text-tropical-lime">{t("entretien.heroHighlight")}</span>
               </h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Nos services d'entretien d'espaces verts et de bâtiment vous
-                garantissent des espaces impeccables et fonctionnels. Nous
-                prenons soin de vos extérieurs et intérieurs avec
-                professionnalisme et attention aux détails.
+                {t("entretien.heroDesc")}
               </p>
 
               {/* Services grid */}
@@ -72,13 +72,13 @@ export default function Entretien() {
         {/* CTA */}
         <section className="glass-card p-10 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
-            Besoin d'un <span className="text-tropical-lime">Devis</span> ?
+            {t("entretien.ctaTitle")} <span className="text-tropical-lime">{t("entretien.ctaHighlight")}</span> ?
           </h3>
           <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm">
-            Contactez-nous pour un devis gratuit et personnalisé.
+            {t("entretien.ctaText")}
           </p>
           <a href="mailto:contact@deuxyprod.com" className="btn-neon btn-neon-lime text-sm px-6 py-2.5">
-            ✉️ Demander un devis
+            {t("entretien.ctaButton")}
           </a>
         </section>
       </Layout>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function PortfolioFullscreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showInfo, setShowInfo] = useState(true);
+  const { t } = useLanguage();
 
   const photos = [
     {
@@ -76,8 +78,8 @@ export default function PortfolioFullscreen() {
   return (
     <>
       <Head>
-        <title>Portfolio Fullscreen - DeuxyProd</title>
-        <meta name="description" content="Portfolio photographique DeuxyProd" />
+        <title>{t("fullscreen.metaTitle")}</title>
+        <meta name="description" content={t("fullscreen.metaDesc")} />
       </Head>
 
       <div className="w-screen h-screen bg-tropical-dark overflow-hidden relative">
@@ -208,8 +210,8 @@ export default function PortfolioFullscreen() {
           showInfo ? 'opacity-100' : 'opacity-0'
         }`}>
           <div className="bg-tropical-dark/40 backdrop-blur-sm px-2 py-1.5 rounded-lg space-y-0.5">
-            <div>← → Navigation</div>
-            <div>I Infos</div>
+            <div>← → {t("fullscreen.navigation")}</div>
+            <div>I {t("fullscreen.info")}</div>
           </div>
         </div>
       </div>

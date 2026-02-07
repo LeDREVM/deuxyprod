@@ -1,37 +1,39 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function PortfolioNav() {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const views = [
     {
       href: "/portfolio",
-      label: "Slides",
+      label: t("portfolioNav.slides"),
       icon: "🎞️",
-      desc: "Navigation par slides",
+      desc: t("portfolioNav.slidesDesc"),
       color: "cyan",
     },
     {
       href: "/portfolio-fullscreen",
-      label: "Plein Écran",
+      label: t("portfolioNav.fullscreen"),
       icon: "🖥️",
-      desc: "Immersion totale",
+      desc: t("portfolioNav.fullscreenDesc"),
       color: "magenta",
     },
     {
       href: "/galerie",
-      label: "Grille",
+      label: t("portfolioNav.grid"),
       icon: "🖼️",
-      desc: "Vue en galerie",
+      desc: t("portfolioNav.gridDesc"),
       color: "lime",
     },
     {
       href: "/slideshow",
-      label: "Diaporama",
+      label: t("portfolioNav.slideshow"),
       icon: "▶️",
-      desc: "Lecture automatique",
+      desc: t("portfolioNav.slideshowDesc"),
       color: "purple",
     },
   ];

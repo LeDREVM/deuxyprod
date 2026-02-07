@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Galerie() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [filter, setFilter] = useState("all");
+  const { t } = useLanguage();
 
   const photos = [
     {
@@ -40,10 +42,10 @@ export default function Galerie() {
   ];
 
   const categories = [
-    { id: "all", label: "Tout", icon: "✨" },
-    { id: "studio", label: "Studio", icon: "🎵" },
-    { id: "portrait", label: "Portrait", icon: "👤" },
-    { id: "lifestyle", label: "Lifestyle", icon: "🌆" }
+    { id: "all", label: t("galerie.filterAll"), icon: "✨" },
+    { id: "studio", label: t("galerie.filterStudio"), icon: "🎵" },
+    { id: "portrait", label: t("galerie.filterPortrait"), icon: "👤" },
+    { id: "lifestyle", label: t("galerie.filterLifestyle"), icon: "🌆" }
   ];
 
   const filteredPhotos = filter === "all"
@@ -72,20 +74,20 @@ export default function Galerie() {
   };
 
   return (
-    <Layout title="Galerie">
+    <Layout title={t("galerie.title")}>
       <Head>
-        <title>Galerie - DeuxyProd</title>
-        <meta name="description" content="Galerie photographique DeuxyProd" />
+        <title>{t("galerie.metaTitle")}</title>
+        <meta name="description" content={t("galerie.metaDesc")} />
       </Head>
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in-up">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient-tropical">Galerie Photo</span>
+            <span className="text-gradient-tropical">{t("galerie.title")}</span>
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto">
-            Découvrez notre collection photographique
+            {t("galerie.subtitle")}
           </p>
         </div>
 
@@ -147,20 +149,20 @@ export default function Galerie() {
 
         {filteredPhotos.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-500">Aucune photo dans cette catégorie</p>
+            <p className="text-gray-500">{t("galerie.noPhotos")}</p>
           </div>
         )}
 
         {/* Liens vers autres vues */}
         <div className="flex justify-center gap-3 mb-12">
           <a href="/portfolio" className="btn-neon btn-neon-cyan text-xs px-5 py-2">
-            📸 Vue Slides
+            {t("galerie.viewSlides")}
           </a>
           <a href="/portfolio-fullscreen" className="btn-neon btn-neon-purple text-xs px-5 py-2">
-            🖥️ Plein Écran
+            {t("galerie.viewFullscreen")}
           </a>
           <a href="/creations" className="btn-neon btn-neon-magenta text-xs px-5 py-2">
-            🎬 Créations
+            {t("galerie.viewCreations")}
           </a>
         </div>
       </div>

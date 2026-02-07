@@ -6,34 +6,37 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 import Head from "next/head";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Home() {
+  const { lang, toggleLang, t } = useLanguage();
+
   const slides = [
     {
       image: "/images/directeur-artistique.jpg",
-      title: "Direction Artistique",
-      subtitle: "Créativité & Visibilité",
+      title: t("home.slideArtistic"),
+      subtitle: t("home.slideArtisticSub"),
       href: "/directeur-artistique",
       color: "cyan",
     },
     {
       image: "/images/entretien-espaces-verts.jpg",
-      title: "Espaces Verts & Bâtiment",
-      subtitle: "Entretenir, Rénover, Sublimer",
+      title: t("home.slideGreen"),
+      subtitle: t("home.slideGreenSub"),
       href: "/entretien",
       color: "lime",
     },
     {
       image: "/photo/20240106-IMG_9743.jpg",
-      title: "Portfolio",
-      subtitle: "Découvrez notre univers visuel",
+      title: t("home.slidePortfolio"),
+      subtitle: t("home.slidePortfolioSub"),
       href: "/portfolio",
       color: "magenta",
     },
     {
       image: "/photo/20240318-IMG_0949.jpg",
-      title: "Créations",
-      subtitle: "Nos productions artistiques",
+      title: t("home.slideCreations"),
+      subtitle: t("home.slideCreationsSub"),
       href: "/creations",
       color: "purple",
     },
@@ -56,8 +59,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>DeuxyProd - Créativité & Excellence</title>
-        <meta name="description" content="DeuxyProd - Direction artistique, espaces verts et productions créatives" />
+        <title>{t("home.metaTitle")}</title>
+        <meta name="description" content={t("home.metaDesc")} />
       </Head>
 
       <div className="w-screen h-screen bg-tropical-dark relative overflow-hidden">
@@ -74,17 +77,30 @@ export default function Home() {
               <span className="text-2xl font-bold text-gradient-tropical">DeuxyProd</span>
               <span className="w-2 h-2 rounded-full bg-tropical-cyan animate-glow-pulse" />
             </Link>
-            <nav className="hidden md:flex items-center space-x-6">
-              {slides.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  className="nav-link text-xs"
-                >
-                  {s.title}
-                </Link>
-              ))}
-            </nav>
+            <div className="flex items-center gap-4">
+              <nav className="hidden md:flex items-center space-x-6">
+                {slides.map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="nav-link text-xs"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </nav>
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:border-tropical-cyan/50 hover:shadow-glow-cyan group"
+                aria-label={lang === "fr" ? "Switch to English" : "Passer en Français"}
+              >
+                <span className="text-tropical-cyan group-hover:scale-110 transition-transform">🌐</span>
+                <span className="text-gray-300 group-hover:text-white transition-colors">
+                  {t("langSwitch")}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -118,7 +134,7 @@ export default function Home() {
                     </p>
                     <Link href={slide.href}>
                       <button className={`${btnColors[slide.color]} text-sm px-6 py-2.5`}>
-                        Découvrir →
+                        {t("home.discover")}
                       </button>
                     </Link>
                   </div>
@@ -134,7 +150,7 @@ export default function Home() {
         {/* Bottom scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 animate-bounce-subtle">
           <div className="flex flex-col items-center text-gray-500 text-xs">
-            <span className="mb-2 uppercase tracking-widest text-[10px]">Swipe</span>
+            <span className="mb-2 uppercase tracking-widest text-[10px]">{t("home.swipe")}</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
             </svg>

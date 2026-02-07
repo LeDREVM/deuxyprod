@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Layout({ children, title }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const router = useRouter();
+  const { lang, toggleLang, t } = useLanguage();
 
   const navItems = [
-    { href: "/", label: "Accueil", icon: "🏠" },
-    { href: "/directeur-artistique", label: "Direction Artistique", icon: "🎨" },
-    { href: "/entretien", label: "Espaces Verts", icon: "🌿" },
-    { href: "/portfolio", label: "Portfolio", icon: "📸" },
-    { href: "/galerie", label: "Galerie", icon: "🖼️" },
-    { href: "/creations", label: "Créations", icon: "🎬" },
+    { href: "/", label: t("nav.home"), icon: "🏠" },
+    { href: "/directeur-artistique", label: t("nav.artisticDirection"), icon: "🎨" },
+    { href: "/entretien", label: t("nav.greenSpaces"), icon: "🌿" },
+    { href: "/portfolio", label: t("nav.portfolio"), icon: "📸" },
+    { href: "/galerie", label: t("nav.gallery"), icon: "🖼️" },
+    { href: "/creations", label: t("nav.creations"), icon: "🎬" },
   ];
 
   useEffect(() => {
@@ -79,20 +81,46 @@ export default function Layout({ children, title }) {
                   {item.label}
                 </Link>
               ))}
+
+              {/* Language Toggle Button */}
+              <button
+                onClick={toggleLang}
+                className="ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-tropical-cyan/20 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:border-tropical-cyan/50 hover:shadow-glow-cyan group"
+                aria-label={lang === "fr" ? "Switch to English" : "Passer en Français"}
+                title={lang === "fr" ? "Switch to English" : "Passer en Français"}
+              >
+                <span className="text-tropical-cyan group-hover:scale-110 transition-transform">🌐</span>
+                <span className="text-gray-300 group-hover:text-white transition-colors">
+                  {t("langSwitch")}
+                </span>
+              </button>
             </nav>
 
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className={`lg:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-white/5 transition ${
-                menuOpen ? "hamburger-open" : ""
-              }`}
-              aria-label="Menu"
-            >
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
-            </button>
+            {/* Mobile: Lang + Hamburger */}
+            <div className="flex items-center gap-2 lg:hidden">
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-tropical-cyan/20 text-[10px] font-bold uppercase tracking-wider transition-all duration-300 hover:border-tropical-cyan/50"
+                aria-label={lang === "fr" ? "Switch to English" : "Passer en Français"}
+              >
+                <span>🌐</span>
+                <span className="text-gray-300">{t("langSwitch")}</span>
+              </button>
+
+              {/* Mobile Hamburger */}
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className={`flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-white/5 transition ${
+                  menuOpen ? "hamburger-open" : ""
+                }`}
+                aria-label="Menu"
+              >
+                <span className="hamburger-line" />
+                <span className="hamburger-line" />
+                <span className="hamburger-line" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -142,7 +170,7 @@ export default function Layout({ children, title }) {
                 DeuxyProd
               </h2>
               <p className="text-xs text-gray-500 uppercase tracking-widest">
-                Créativité & Excellence
+                {t("footer.tagline")}
               </p>
             </div>
 
@@ -164,14 +192,14 @@ export default function Layout({ children, title }) {
               <p className="text-xs text-gray-600">
                 &copy; {new Date().getFullYear()} DeuxyProd
               </p>
-              <p className="text-xs text-gray-700">Tous droits réservés</p>
+              <p className="text-xs text-gray-700">{t("footer.rights")}</p>
             </div>
           </div>
 
           {/* Bottom glow line */}
           <div className="tropical-divider mt-8" />
           <p className="text-center text-[10px] text-gray-700 mt-4 uppercase tracking-widest">
-            Made with 🌴 vibes
+            {t("footer.madeWith")}
           </p>
         </div>
       </footer>
@@ -180,7 +208,7 @@ export default function Layout({ children, title }) {
       <button
         onClick={scrollToTop}
         className={`back-to-top ${showBackToTop ? "visible" : ""}`}
-        aria-label="Remonter en haut"
+        aria-label={t("backToTop")}
       >
         <svg
           className="w-5 h-5"

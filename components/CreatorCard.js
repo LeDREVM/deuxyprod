@@ -1,6 +1,9 @@
 import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function CreatorCard({ creator, reverse = false }) {
+  const { t } = useLanguage();
+
   return (
     <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 items-center glass-card p-6 md:p-8`}>
       {/* Photo du créateur */}
@@ -55,7 +58,7 @@ export default function CreatorCard({ creator, reverse = false }) {
         {creator.specialties && creator.specialties.length > 0 && (
           <div className="mb-4">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">
-              Spécialités
+              {t("creator.specialties")}
             </h4>
             <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {creator.specialties.map((specialty, index) => (
@@ -94,7 +97,7 @@ export default function CreatorCard({ creator, reverse = false }) {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="text-xs group-hover:underline">Contact</span>
+                <span className="text-xs group-hover:underline">{t("creator.contact")}</span>
               </a>
             )}
           </div>

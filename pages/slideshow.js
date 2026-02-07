@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { photos } from "../data/photos";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Slideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,6 +9,7 @@ export default function Slideshow() {
   const [interval, setIntervalTime] = useState(5000);
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef(null);
+  const { t } = useLanguage();
 
   const currentPhoto = photos[currentIndex];
 
@@ -56,8 +58,8 @@ export default function Slideshow() {
   return (
     <>
       <Head>
-        <title>Diaporama - DeuxyProd</title>
-        <meta name="description" content="Diaporama automatique du portfolio DeuxyProd" />
+        <title>{t("slideshow.metaTitle")}</title>
+        <meta name="description" content={t("slideshow.metaDesc")} />
       </Head>
 
       <div className="w-screen h-screen bg-tropical-dark overflow-hidden relative">
@@ -97,7 +99,7 @@ export default function Slideshow() {
               </a>
 
               <div className="text-center">
-                <div className="text-[10px] text-gray-600 uppercase tracking-widest">Diaporama</div>
+                <div className="text-[10px] text-gray-600 uppercase tracking-widest">{t("slideshow.title")}</div>
                 <div className="text-lg font-bold text-white">
                   <span className="text-tropical-cyan">{String(currentIndex + 1).padStart(2, '0')}</span>
                   <span className="text-gray-600 mx-1">/</span>
@@ -128,13 +130,13 @@ export default function Slideshow() {
           {/* Central Controls */}
           <div className="absolute bottom-28 left-1/2 -translate-x-1/2">
             <div className="glass-tropical rounded-full px-5 py-3 flex items-center gap-4 border border-tropical-cyan/10">
-              <button onClick={goToPrev} className="text-gray-400 hover:text-tropical-cyan transition" title="Précédent (←)">
+              <button onClick={goToPrev} className="text-gray-400 hover:text-tropical-cyan transition" title={t("slideshow.prev")}>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
 
-              <button onClick={togglePlayPause} className="text-white hover:text-tropical-cyan transition" title={isPlaying ? "Pause" : "Lecture"}>
+              <button onClick={togglePlayPause} className="text-white hover:text-tropical-cyan transition" title={isPlaying ? "Pause" : "Play"}>
                 {isPlaying ? (
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -147,7 +149,7 @@ export default function Slideshow() {
                 )}
               </button>
 
-              <button onClick={goToNext} className="text-gray-400 hover:text-tropical-cyan transition" title="Suivant (→)">
+              <button onClick={goToNext} className="text-gray-400 hover:text-tropical-cyan transition" title={t("slideshow.next")}>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -206,15 +208,15 @@ export default function Slideshow() {
           <div className="bg-tropical-dark/60 backdrop-blur-sm px-2.5 py-3 rounded-lg space-y-1.5">
             <div className="flex items-center gap-1.5">
               <kbd className="px-1.5 py-0.5 bg-white/5 rounded text-[9px]">←→</kbd>
-              <span>Nav</span>
+              <span>{t("slideshow.navHint")}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <kbd className="px-1.5 py-0.5 bg-white/5 rounded text-[9px]">⎵</kbd>
-              <span>Play</span>
+              <span>{t("slideshow.playHint")}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <kbd className="px-1.5 py-0.5 bg-white/5 rounded text-[9px]">Esc</kbd>
-              <span>Quit</span>
+              <span>{t("slideshow.quitHint")}</span>
             </div>
           </div>
         </div>

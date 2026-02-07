@@ -2,30 +2,33 @@ import React from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import PortfolioNav from "../components/PortfolioNav";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function PortfolioIndex() {
+  const { t } = useLanguage();
+
   const stats = [
-    { label: "Photos", value: "3", icon: "📸" },
-    { label: "Catégories", value: "3", icon: "🏷️" },
-    { label: "Vues", value: "4", icon: "👁️" },
+    { label: t("portfolioIndex.stats.photos"), value: "3", icon: "📸" },
+    { label: t("portfolioIndex.stats.categories"), value: "3", icon: "🏷️" },
+    { label: t("portfolioIndex.stats.views"), value: "4", icon: "👁️" },
   ];
 
   const features = [
     {
-      title: "Navigation Intuitive",
-      description: "Plusieurs modes adaptés à vos préférences",
+      title: t("portfolioIndex.features.nav.title"),
+      description: t("portfolioIndex.features.nav.desc"),
       icon: "⚡",
       color: "cyan",
     },
     {
-      title: "Haute Qualité",
-      description: "Images optimisées pour une expérience visuelle top",
+      title: t("portfolioIndex.features.quality.title"),
+      description: t("portfolioIndex.features.quality.desc"),
       icon: "💎",
       color: "magenta",
     },
     {
-      title: "Responsive",
-      description: "Adapté à tous les écrans",
+      title: t("portfolioIndex.features.responsive.title"),
+      description: t("portfolioIndex.features.responsive.desc"),
       icon: "📱",
       color: "lime",
     },
@@ -38,20 +41,20 @@ export default function PortfolioIndex() {
   };
 
   return (
-    <Layout title="Portfolio">
+    <Layout title={t("nav.portfolio")}>
       <Head>
-        <title>Portfolio - DeuxyProd</title>
-        <meta name="description" content="Explorez le portfolio photographique de DeuxyProd" />
+        <title>{t("portfolioIndex.metaTitle")}</title>
+        <meta name="description" content={t("portfolioIndex.metaDesc")} />
       </Head>
 
       <div className="max-w-5xl mx-auto">
         {/* Hero */}
         <div className="text-center mb-12 animate-fade-in-up">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient-tropical">Portfolio Photographique</span>
+            <span className="text-gradient-tropical">{t("portfolioIndex.title")}</span>
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto mb-8">
-            Découvrez notre collection, capturant l'essence de la culture urbaine et musicale.
+            {t("portfolioIndex.subtitle")}
           </p>
 
           {/* Stats */}
@@ -83,7 +86,7 @@ export default function PortfolioIndex() {
         {/* Preview */}
         <div className="glass-card p-6 mb-12">
           <h2 className="text-lg font-bold text-white mb-4">
-            Aperçu de la <span className="text-tropical-cyan">Collection</span>
+            {t("portfolioIndex.preview")} <span className="text-tropical-cyan">{t("portfolioIndex.previewHighlight")}</span>
           </h2>
           <div className="grid grid-cols-3 gap-3">
             {[
@@ -111,23 +114,23 @@ export default function PortfolioIndex() {
         {/* CTA */}
         <div className="glass-card p-10 text-center mb-8">
           <h2 className="text-2xl font-bold text-white mb-4">
-            Prêt à <span className="text-gradient-tropical">Explorer</span> ?
+            {t("portfolioIndex.ctaTitle")} <span className="text-gradient-tropical">{t("portfolioIndex.ctaHighlight")}</span> ?
           </h2>
           <p className="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
-            Choisissez votre mode de visualisation préféré.
+            {t("portfolioIndex.ctaText")}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            <a href="/portfolio" className="btn-neon btn-neon-cyan text-xs px-5 py-2">📸 Slides</a>
-            <a href="/portfolio-fullscreen" className="btn-neon btn-neon-magenta text-xs px-5 py-2">🖥️ Plein Écran</a>
-            <a href="/galerie" className="btn-neon btn-neon-lime text-xs px-5 py-2">🖼️ Grille</a>
-            <a href="/slideshow" className="btn-neon btn-neon-purple text-xs px-5 py-2">▶️ Diaporama</a>
+            <a href="/portfolio" className="btn-neon btn-neon-cyan text-xs px-5 py-2">{t("portfolioIndex.slides")}</a>
+            <a href="/portfolio-fullscreen" className="btn-neon btn-neon-magenta text-xs px-5 py-2">{t("portfolioIndex.fullscreen")}</a>
+            <a href="/galerie" className="btn-neon btn-neon-lime text-xs px-5 py-2">{t("portfolioIndex.grid")}</a>
+            <a href="/slideshow" className="btn-neon btn-neon-purple text-xs px-5 py-2">{t("portfolioIndex.slideshow")}</a>
           </div>
         </div>
 
         {/* Photographer info */}
         <div className="text-center text-gray-600 text-xs">
-          <p>📸 Photographe : <span className="text-tropical-cyan">@ledrevm</span></p>
-          <p className="text-[10px] mt-1">© 2024 DeuxyProd — Tous droits réservés</p>
+          <p>📸 {t("portfolioIndex.photographer")} : <span className="text-tropical-cyan">@ledrevm</span></p>
+          <p className="text-[10px] mt-1">© 2024 DeuxyProd — {t("portfolioIndex.allRights")}</p>
         </div>
       </div>
     </Layout>

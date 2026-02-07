@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import { artists, playlists, featuredVideos, channelInfo } from "../data/videos";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Creations() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activeArtist, setActiveArtist] = useState("all");
+  const { t } = useLanguage();
 
   const openVideo = (videoId, title) => {
     setSelectedVideo({ id: videoId, title });
@@ -49,18 +51,18 @@ export default function Creations() {
   return (
     <>
       <Head>
-        <title>Créations Artistiques - DeuxyProd</title>
-        <meta name="description" content="Découvrez nos créations artistiques et musicales - Direction Artistique OfVision" />
+        <title>{t("creations.metaTitle")}</title>
+        <meta name="description" content={t("creations.metaDesc")} />
       </Head>
 
-      <Layout title="Créations">
+      <Layout title={t("creations.title")}>
         {/* Hero */}
         <section className="mb-12 text-center animate-fade-in-up">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">
-            <span className="text-gradient-fire">Créations Artistiques</span>
+            <span className="text-gradient-fire">{t("creations.title")}</span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm">
-            Direction Artistique — Découvrez les artistes et leurs productions
+            {t("creations.subtitle")}
           </p>
         </section>
 
@@ -75,7 +77,7 @@ export default function Creations() {
                   : "text-gray-500 hover:text-white hover:bg-white/5"
               }`}
             >
-              🎶 Tous
+              {t("creations.filterAll")}
             </button>
             {artists.map((artist) => {
               const c = colorMap[artist.color] || colorMap.cyan;
@@ -105,7 +107,7 @@ export default function Creations() {
               <section key={artist.id} className="mb-14">
                 {/* Artist header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-1 h-8 rounded-full ${c.badge.split(" ")[0].replace("/10", "")}`}
+                  <div className={`w-1 h-8 rounded-full`}
                     style={{ background: artist.color === "cyan" ? "#00FFD1" : artist.color === "magenta" ? "#FF006E" : artist.color === "lime" ? "#39FF14" : "#8B5CF6" }}
                   />
                   <div>
@@ -113,7 +115,7 @@ export default function Creations() {
                       {artist.name}
                     </h2>
                     <p className="text-[10px] text-gray-600 uppercase tracking-widest">
-                      Direction Artistique OfVision • {artist.videos.length} vidéo{artist.videos.length > 1 ? "s" : ""}
+                      {t("creations.artisticDirection")} • {artist.videos.length} {artist.videos.length > 1 ? t("creations.videosPlural") : t("creations.videos")}
                     </p>
                   </div>
                 </div>
@@ -150,7 +152,7 @@ export default function Creations() {
                       </div>
                       <div className="p-3">
                         <h3 className="text-xs font-semibold text-white truncate">{video.title}</h3>
-                        <p className="text-[10px] text-gray-600 mt-0.5">Direction Artistique</p>
+                        <p className="text-[10px] text-gray-600 mt-0.5">{t("creations.directionArtistique")}</p>
                       </div>
                     </div>
                   ))}
@@ -165,16 +167,16 @@ export default function Creations() {
         {/* Playlist embed */}
         <section className="mb-14 glass-card p-6 md:p-8">
           <h2 className="text-xl font-bold text-white mb-1 text-center">
-            <span className="text-gradient-tropical">Playlist Complète</span>
+            <span className="text-gradient-tropical">{t("creations.playlistTitle")}</span>
           </h2>
           <p className="text-center text-gray-500 text-xs mb-5">
-            Toutes les créations dans une playlist
+            {t("creations.playlistSubtitle")}
           </p>
           <div className="max-w-4xl mx-auto">
             <div className="relative aspect-video rounded-xl overflow-hidden border border-tropical-cyan/10">
               <iframe
                 src="https://www.youtube.com/embed/videoseries?list=PLniFU1EmwtN8TvGH_T_6uRaoZFUJPCpHe"
-                title="Playlist Créations Artistiques"
+                title={t("creations.playlistTitle")}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
@@ -186,10 +188,10 @@ export default function Creations() {
         {/* CTA */}
         <section className="glass-card p-8 text-center">
           <h3 className="text-xl font-bold text-white mb-3">
-            Abonnez-vous à <span className="text-tropical-magenta">Notre Chaîne</span>
+            {t("creations.ctaTitle")} <span className="text-tropical-magenta">{t("creations.ctaHighlight")}</span>
           </h3>
           <p className="text-gray-500 text-xs mb-5 max-w-md mx-auto">
-            Ne manquez aucune de nos nouvelles créations.
+            {t("creations.ctaText")}
           </p>
           <a
             href={channelInfo.url}
@@ -200,7 +202,7 @@ export default function Creations() {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
-            S'abonner
+            {t("creations.subscribe")}
           </a>
         </section>
       </Layout>

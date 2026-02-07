@@ -7,9 +7,11 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Head from "next/head";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
 
   const photos = [
     {
@@ -38,8 +40,8 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Portfolio - DeuxyProd</title>
-        <meta name="description" content="Portfolio photographique DeuxyProd" />
+        <title>{t("portfolio.metaTitle")}</title>
+        <meta name="description" content={t("portfolio.metaDesc")} />
       </Head>
 
       <div className="w-screen h-screen bg-tropical-dark overflow-hidden relative">
@@ -62,7 +64,7 @@ export default function Portfolio() {
                 <span className="text-gray-600">{String(photos.length).padStart(2, '0')}</span>
               </div>
               <Link href="/galerie" className="btn-neon btn-neon-cyan text-[10px] px-3 py-1">
-                Galerie
+                {t("portfolio.gallery")}
               </Link>
             </div>
           </div>
@@ -136,9 +138,9 @@ export default function Portfolio() {
 
         {/* Instructions */}
         <div className="absolute bottom-4 right-4 z-50 text-gray-600 text-[10px]">
-          <span>← → Naviguer</span>
+          <span>{t("portfolio.navigate")}</span>
           <span className="mx-1">•</span>
-          <span>Molette</span>
+          <span>{t("portfolio.wheel")}</span>
         </div>
       </div>
     </>
