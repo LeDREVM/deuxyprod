@@ -2,6 +2,13 @@
 
 Site web pour DeuxyProd présentant les services de direction artistique et d'entretien d'espaces verts et bâtiment.
 
+**Bio**
+
+- **Qui :** DeuxyProd est un duo créatif (MonsieurR & LeDREVM) spécialisé en direction artistique, production musicale et photographie urbaine. Nous combinons une pratique du terrain et une esthétique contemporaine pour des projets visuels et sonores.
+- **Mission :** Créer des identités visuelles fortes et des contenus multimédias authentiques qui soutiennent artistes, marques et événements.
+- **Approche :** Travail collaboratif, accent sur l'image argentique et la culture urbaine, avec une attention particulière à la narration visuelle.
+- **Contact :** Pour commandes ou collaborations, écrivez à longvichy@gmail.com ou suivez @ledrevm sur Instagram.
+
 ## Technologies utilisées
 
 - React
