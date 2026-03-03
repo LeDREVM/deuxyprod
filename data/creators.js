@@ -35,7 +35,7 @@ export const creators = [
     name: "LeDREVM",
     title: "Photographe & Directeur Artistique",
     aka: "@ledrevm",
-    photo: "/photo/20240106-IMG_9743.jpg",
+    photo: "/photo/by-ledrevm/20240106-IMG_9743.jpg",
     bio: "Photographe passionné spécialisé dans la photographie urbaine et le portrait. LeDREVM capture l'essence de la culture street et musicale à travers son objectif, créant des visuels authentiques et percutants.",
     bioExtended: "Son approche artistique mêle sensibilité documentaire et esthétique contemporaine. Chaque cliché raconte une histoire, chaque projet devient une expérience visuelle immersive. Il excelle dans la création de contenus visuels pour artistes et marques.",
     specialties: [
