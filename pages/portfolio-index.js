@@ -49,11 +49,11 @@ export default function PortfolioIndex() {
 
       <div className="max-w-5xl mx-auto">
         {/* Hero */}
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="mb-12 text-center animate-fade-in-up">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">
             <span className="text-gradient-tropical">{t("portfolioIndex.title")}</span>
           </h1>
-          <p className="text-gray-400 max-w-xl mx-auto mb-8">
+          <p className="max-w-xl mx-auto mb-8 text-gray-400">
             {t("portfolioIndex.subtitle")}
           </p>
 
@@ -62,7 +62,7 @@ export default function PortfolioIndex() {
             {stats.map((stat, i) => (
               <div key={i} className="text-center">
                 <span className="text-lg">{stat.icon}</span>
-                <div className="text-2xl font-bold text-tropical-cyan mt-1">{stat.value}</div>
+                <div className="mt-1 text-2xl font-bold text-tropical-cyan">{stat.value}</div>
                 <div className="text-[10px] text-gray-500 uppercase tracking-widest">{stat.label}</div>
               </div>
             ))}
@@ -73,19 +73,19 @@ export default function PortfolioIndex() {
         <PortfolioNav />
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-4 mb-12">
+        <div className="grid gap-4 mb-12 md:grid-cols-3">
           {features.map((f, i) => (
             <div key={i} className={`glass-card p-5 text-center border ${colorBorder[f.color]}`}>
-              <span className="text-2xl mb-2 block">{f.icon}</span>
-              <h3 className="text-sm font-bold text-white mb-1">{f.title}</h3>
+              <span className="block mb-2 text-2xl">{f.icon}</span>
+              <h3 className="mb-1 text-sm font-bold text-white">{f.title}</h3>
               <p className="text-xs text-gray-500">{f.description}</p>
             </div>
           ))}
         </div>
 
         {/* Preview */}
-        <div className="glass-card p-6 mb-12">
-          <h2 className="text-lg font-bold text-white mb-4">
+        <div className="p-6 mb-12 glass-card">
+          <h2 className="mb-4 text-lg font-bold text-white">
             {t("portfolioIndex.preview")} <span className="text-tropical-cyan">{t("portfolioIndex.previewHighlight")}</span>
           </h2>
           <div className="grid grid-cols-3 gap-3">
@@ -98,9 +98,9 @@ export default function PortfolioIndex() {
                 <img
                   src={photo.src}
                   alt={photo.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                <div className="absolute inset-0 flex items-end p-3 transition-opacity opacity-0 bg-gradient-to-t from-tropical-dark/80 to-transparent group-hover:opacity-100">
                   <div className="text-white">
                     <h3 className="text-xs font-bold">{photo.title}</h3>
                     <p className="text-[10px] text-tropical-cyan/60">{photo.date}</p>
@@ -112,25 +112,25 @@ export default function PortfolioIndex() {
         </div>
 
         {/* CTA */}
-        <div className="glass-card p-10 text-center mb-8">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <div className="p-10 mb-8 text-center glass-card">
+          <h2 className="mb-4 text-2xl font-bold text-white">
             {t("portfolioIndex.ctaTitle")} <span className="text-gradient-tropical">{t("portfolioIndex.ctaHighlight")}</span> ?
           </h2>
-          <p className="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
+          <p className="max-w-lg mx-auto mb-6 text-sm text-gray-400">
             {t("portfolioIndex.ctaText")}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            <a href="/portfolio" className="btn-neon btn-neon-cyan text-xs px-5 py-2">{t("portfolioIndex.slides")}</a>
-            <a href="/portfolio-fullscreen" className="btn-neon btn-neon-magenta text-xs px-5 py-2">{t("portfolioIndex.fullscreen")}</a>
-            <a href="/galerie" className="btn-neon btn-neon-lime text-xs px-5 py-2">{t("portfolioIndex.grid")}</a>
-            <a href="/slideshow" className="btn-neon btn-neon-purple text-xs px-5 py-2">{t("portfolioIndex.slideshow")}</a>
+            <a href="/portfolio" className="px-5 py-2 text-xs btn-neon btn-neon-cyan">{t("portfolioIndex.slides")}</a>
+            <a href="/portfolio-fullscreen" className="px-5 py-2 text-xs btn-neon btn-neon-magenta">{t("portfolioIndex.fullscreen")}</a>
+            <a href="/galerie" className="px-5 py-2 text-xs btn-neon btn-neon-lime">{t("portfolioIndex.grid")}</a>
+            <a href="/slideshow" className="px-5 py-2 text-xs btn-neon btn-neon-purple">{t("portfolioIndex.slideshow")}</a>
           </div>
         </div>
 
         {/* Photographer info */}
-        <div className="text-center text-gray-600 text-xs">
+        <div className="text-xs text-center text-gray-600">
           <p>📸 {t("portfolioIndex.photographer")} : <span className="text-tropical-cyan">@ledrevm</span></p>
-          <p className="text-[10px] mt-1">© 2024 DeuxyProd — {t("portfolioIndex.allRights")}</p>
+          <p className="text-[10px] mt-1">© 2026 OfVisioon — {t("portfolioIndex.allRights")}</p>
         </div>
       </div>
     </Layout>

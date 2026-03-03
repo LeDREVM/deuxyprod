@@ -7,7 +7,7 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="DeuxyProd - Services de direction artistique et entretien d'espaces verts"
+          content="OffDrevmOne - Services de direction artistique et entretien d'espaces verts"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

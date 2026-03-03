@@ -58,17 +58,17 @@ export default function Creations() {
       <Layout title={t("creations.title")}>
         {/* Hero */}
         <section className="mb-12 text-center animate-fade-in-up">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">
+          <h1 className="mb-3 text-4xl font-bold md:text-5xl">
             <span className="text-gradient-fire">{t("creations.title")}</span>
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm">
+          <p className="max-w-2xl mx-auto text-sm text-gray-400">
             {t("creations.subtitle")}
           </p>
         </section>
 
         {/* Artist Filter */}
         <div className="flex justify-center mb-10">
-          <div className="glass-card inline-flex p-1 gap-1 flex-wrap justify-center">
+          <div className="inline-flex flex-wrap justify-center gap-1 p-1 glass-card">
             <button
               onClick={() => setActiveArtist("all")}
               className={`px-4 py-2 rounded-xl text-xs font-medium transition-all duration-300 ${
@@ -121,24 +121,24 @@ export default function Creations() {
                 </div>
 
                 {/* Videos grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {artist.videos.map((video) => (
                     <div
                       key={video.id}
-                      className="group glass-card p-0 overflow-hidden cursor-pointer"
+                      className="p-0 overflow-hidden cursor-pointer group glass-card"
                       onClick={() => openVideo(video.id, `${artist.name} — ${video.title}`)}
                     >
-                      <div className="relative aspect-video overflow-hidden">
+                      <div className="relative overflow-hidden aspect-video">
                         <img
                           src={video.thumbnail}
                           alt={video.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => {
                             e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
                           }}
                         />
                         {/* Play overlay */}
-                        <div className="absolute inset-0 bg-tropical-dark/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-tropical-dark/40 group-hover:opacity-100">
                           <div className={`w-12 h-12 rounded-full flex items-center justify-center ${c.play}`}>
                             <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
@@ -165,15 +165,15 @@ export default function Creations() {
         <div className="tropical-divider mb-14" />
 
         {/* Playlist embed */}
-        <section className="mb-14 glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-1 text-center">
+        <section className="p-6 mb-14 glass-card md:p-8">
+          <h2 className="mb-1 text-xl font-bold text-center text-white">
             <span className="text-gradient-tropical">{t("creations.playlistTitle")}</span>
           </h2>
-          <p className="text-center text-gray-500 text-xs mb-5">
+          <p className="mb-5 text-xs text-center text-gray-500">
             {t("creations.playlistSubtitle")}
           </p>
           <div className="max-w-4xl mx-auto">
-            <div className="relative aspect-video rounded-xl overflow-hidden border border-tropical-cyan/10">
+            <div className="relative overflow-hidden border aspect-video rounded-xl border-tropical-cyan/10">
               <iframe
                 src="https://www.youtube.com/embed/videoseries?list=PLniFU1EmwtN8TvGH_T_6uRaoZFUJPCpHe"
                 title={t("creations.playlistTitle")}
@@ -186,18 +186,18 @@ export default function Creations() {
         </section>
 
         {/* CTA */}
-        <section className="glass-card p-8 text-center">
-          <h3 className="text-xl font-bold text-white mb-3">
+        <section className="p-8 text-center glass-card">
+          <h3 className="mb-3 text-xl font-bold text-white">
             {t("creations.ctaTitle")} <span className="text-tropical-magenta">{t("creations.ctaHighlight")}</span>
           </h3>
-          <p className="text-gray-500 text-xs mb-5 max-w-md mx-auto">
+          <p className="max-w-md mx-auto mb-5 text-xs text-gray-500">
             {t("creations.ctaText")}
           </p>
           <a
             href={channelInfo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-neon btn-neon-magenta text-xs px-5 py-2 inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 px-5 py-2 text-xs btn-neon btn-neon-magenta"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -210,11 +210,11 @@ export default function Creations() {
       {/* Modal Vidéo */}
       {selectedVideo && (
         <div
-          className="fixed inset-0 bg-tropical-dark/95 lightbox-backdrop z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tropical-dark/95 lightbox-backdrop"
           onClick={closeVideo}
         >
           <button
-            className="absolute top-5 right-5 text-gray-400 hover:text-tropical-cyan transition z-50 p-2"
+            className="absolute z-50 p-2 text-gray-400 transition top-5 right-5 hover:text-tropical-cyan"
             onClick={closeVideo}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,8 +222,8 @@ export default function Creations() {
             </svg>
           </button>
 
-          <div className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="relative aspect-video rounded-xl overflow-hidden border border-tropical-cyan/10">
+          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <div className="relative overflow-hidden border aspect-video rounded-xl border-tropical-cyan/10">
               <iframe
                 src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
                 title={selectedVideo.title}
