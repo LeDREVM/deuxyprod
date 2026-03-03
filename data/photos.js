@@ -139,7 +139,6 @@ export const photos = [
     featured: false,
     orientation: "landscape"
   },
- ,
   {
     id: 15,
     src: "/photo/by-ledrevm/IMG_0776.jpg",
