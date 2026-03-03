@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
+import { photos as allPhotos } from "../data/photos";
 
 export default function PortfolioFullscreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,98 +10,16 @@ export default function PortfolioFullscreen() {
   const [showInfo, setShowInfo] = useState(true);
   const { t } = useLanguage();
 
-  const photos = [
-    {
-      src: "/photo/20240111-IMG_9907.jpg",
-      title: "Studio Session",
-      date: "11 Janvier 2024",
-      description: "Création musicale en studio - L'art de la production",
-      location: "Studio d'enregistrement",
-      camera: "Appareil argentique",
-      tags: ["Studio", "Musique", "Production"]
-    },
-    {
-      src: "/photo/20240106-IMG_9743.jpg",
-      title: "Street Portrait",
-      date: "06 Janvier 2024",
-      description: "Portrait urbain - L'authenticité dans la rue",
-      location: "Environnement urbain",
-      camera: "Appareil argentique",
-      tags: ["Portrait", "Street", "Urbain"]
-    },
-    {
-      src: "/photo/20240318-IMG_0949.jpg",
-      title: "Urban Lifestyle",
-      date: "18 Mars 2024",
-      description: "Lifestyle urbain - La culture de la rue",
-      location: "Espace public",
-      camera: "Appareil argentique",
-      tags: ["Lifestyle", "Culture", "Street"]
-    },
-    {
-      src: "/photo/20231029-IMG_8587.jpg",
-      title: "Session Octobre",
-      date: "29 Octobre 2023",
-      description: "Capture artistique - L'essence du moment",
-      location: "Extérieur",
-      camera: "Appareil argentique",
-      tags: ["Lifestyle", "Artistique", "Automne"]
-    },
-    {
-      src: "/photo/20240106-IMG_9753.jpg",
-      title: "Street Session",
-      date: "06 Janvier 2024",
-      description: "Ambiance urbaine - La rue comme toile de fond",
-      location: "Environnement urbain",
-      camera: "Appareil argentique",
-      tags: ["Portrait", "Street", "Urbain"]
-    },
-    {
-      src: "/photo/20240107-IMG_9789.jpg",
-      title: "Urban Vibes",
-      date: "07 Janvier 2024",
-      description: "L'énergie de la ville capturée",
-      location: "Environnement urbain",
-      camera: "Appareil argentique",
-      tags: ["Portrait", "Urban", "Vibes"]
-    },
-    {
-      src: "/photo/IMG_8396.JPG",
-      title: "Artistic Shot",
-      date: "2023",
-      description: "Capture artistique - Vision créative",
-      location: "Studio",
-      camera: "Appareil argentique",
-      tags: ["Studio", "Artistique", "Création"]
-    },
-    {
-      src: "/photo/IMG_8400.JPG",
-      title: "Creative Portrait",
-      date: "2023",
-      description: "Portrait créatif - L'art du cadrage",
-      location: "Studio",
-      camera: "Appareil argentique",
-      tags: ["Studio", "Portrait", "Créatif"]
-    },
-    {
-      src: "/photo/IMG_7681.jpg",
-      title: "Creative Session",
-      date: "2024",
-      description: "Session créative - Exploration artistique",
-      location: "Studio",
-      camera: "Appareil argentique",
-      tags: ["Studio", "Créatif", "Session"]
-    },
-    {
-      src: "/photo/IMG_8321.jpg",
-      title: "Portrait Study",
-      date: "2024",
-      description: "Etude de portrait - Capturer l'essence",
-      location: "Studio",
-      camera: "Appareil argentique",
-      tags: ["Portrait", "Etude", "Créatif"]
-    },
-  ];
+  // Map photos to minimal fields needed for display
+  const photos = allPhotos.map(({ src, title, date, description, location, camera, tags }) => ({
+    src,
+    title,
+    date,
+    description,
+    location,
+    camera,
+    tags
+  }));
 
   const goToNext = () => {
     if (!isTransitioning) {
