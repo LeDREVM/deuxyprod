@@ -14,10 +14,12 @@ export default function Galerie() {
 
   const media = [
     // === PHOTOS ===
-    ...photos.map(p => ({
-      ...p,
-      type: "photo",
-    })),
+    ...photos
+      .filter(Boolean) // remove any undefined items
+      .map(p => ({
+        ...p,
+        type: "photo",
+      })),
 
     // === VIDÉOS ===
     ...artists.flatMap(a =>
@@ -94,6 +96,9 @@ export default function Galerie() {
 
   ];
 
+  // Filter out any undefined items and ensure all have type property
+  const safeMedia = media.filter(item => item && item.type);
+
   const categories = [
     { id: "all", label: t("galerie.filterAll"), icon: "✨" },
     { id: "studio", label: t("galerie.filterStudio"), icon: "🎵" },
@@ -103,11 +108,8 @@ export default function Galerie() {
   ];
 
   const filteredMedia = filter === "all"
-    ? media
-    : media.filter(item => item.category === filter);
-
-  // debug output: log all media items (not data.items which doesn't exist)
-  console.log('galerie items:', JSON.stringify(media, null, 2));
+    ? safeMedia
+    : safeMedia.filter(item => item.category === filter);
 
   const openLightbox = (item) => {
     setSelectedItem(item);
@@ -120,14 +122,14 @@ export default function Galerie() {
   };
 
   const navigateLightbox = (direction) => {
-    const currentIndex = media.findIndex(p => p.id === selectedItem.id);
+    const currentIndex = safeMedia.findIndex(p => p.id === selectedItem.id);
     let newIndex;
     if (direction === 'next') {
-      newIndex = (currentIndex + 1) % media.length;
+      newIndex = (currentIndex + 1) % safeMedia.length;
     } else {
-      newIndex = (currentIndex - 1 + media.length) % media.length;
+      newIndex = (currentIndex - 1 + safeMedia.length) % safeMedia.length;
     }
-    setSelectedItem(media[newIndex]);
+    setSelectedItem(safeMedia[newIndex]);
   };
 
   return (
