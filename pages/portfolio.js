@@ -69,6 +69,20 @@ export default function Portfolio() {
       date: "2023",
       description: "Portrait créatif - L'art du cadrage",
       location: "Studio"
+    },
+    {
+      src: "/photo/IMG_7681.jpg",
+      title: "Creative Session",
+      date: "2024",
+      description: "Session créative - Exploration artistique",
+      location: "Studio"
+    },
+    {
+      src: "/photo/IMG_8321.jpg",
+      title: "Portrait Study",
+      date: "2024",
+      description: "Etude de portrait - Capturer l'essence",
+      location: "Studio"
     }
   ];
 
