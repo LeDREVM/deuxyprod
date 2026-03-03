@@ -99,6 +99,9 @@ export default function Galerie() {
       category: "studio",
       tags: ["Studio", "Portrait", "Créatif"]
     },
+
+    { id: 9, type: "photo", src: "/photo/IMG_7681.jpg", title: "Creative Session", date: "2024", description: "Session créative - Exploration artistique", location: "Studio", category: "studio", tags: ["Studio", "Créatif", "Session"] },
+    { id: 10, type: "photo", src: "/photo/IMG_8321.jpg", title: "Portrait Study", date: "2024", description: "Etude de portrait - Capturer l'essence", location: "Studio", category: "portrait", tags: ["Portrait", "Etude", "Créatif"] },
     // === VIDÉOS ===
     {
       id: 9,

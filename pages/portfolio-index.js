@@ -8,7 +8,7 @@ export default function PortfolioIndex() {
   const { t } = useLanguage();
 
   const stats = [
-    { label: t("portfolioIndex.stats.photos"), value: "3", icon: "📸" },
+    { label: t("portfolioIndex.stats.photos"), value: "10", icon: "📸" },
     { label: t("portfolioIndex.stats.categories"), value: "3", icon: "🏷️" },
     { label: t("portfolioIndex.stats.views"), value: "4", icon: "👁️" },
   ];
