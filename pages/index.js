@@ -27,14 +27,14 @@ export default function Home() {
       color: "lime",
     },
     {
-      image: "/photo/20240106-IMG_9743.jpg",
+      image: "/photo/by-ledrevm/20240106-IMG_9743.jpg",
       title: t("home.slidePortfolio"),
       subtitle: t("home.slidePortfolioSub"),
       href: "/portfolio",
       color: "magenta",
     },
     {
-      image: "/photo/20240318-IMG_0949.jpg",
+      image: "/photo/by-ledrevm/20240318-IMG_0949.jpg",
       title: t("home.slideCreations"),
       subtitle: t("home.slideCreationsSub"),
       href: "/creations",
@@ -63,27 +63,27 @@ export default function Home() {
         <meta name="description" content={t("home.metaDesc")} />
       </Head>
 
-      <div className="w-screen h-screen bg-tropical-dark relative overflow-hidden">
+      <div className="relative w-screen h-screen overflow-hidden bg-tropical-dark">
         {/* Background orbs */}
-        <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="fixed inset-0 z-0 pointer-events-none">
           <div className="tropical-orb tropical-orb-cyan w-[600px] h-[600px] -top-48 -right-48" />
           <div className="tropical-orb tropical-orb-magenta w-[500px] h-[500px] bottom-0 -left-48" />
         </div>
 
         {/* Navbar overlay */}
         <div className="absolute top-0 left-0 right-0 z-50 p-6">
-          <div className="flex justify-between items-center max-w-7xl mx-auto">
-            <Link href="/" className="group flex items-center space-x-2">
-              <span className="text-2xl font-bold text-gradient-tropical">DeuxyProd</span>
+          <div className="flex items-center justify-between mx-auto max-w-7xl">
+            <Link href="/" className="flex items-center space-x-2 group">
+              <span className="text-2xl font-bold text-gradient-tropical">OfVisioon</span>
               <span className="w-2 h-2 rounded-full bg-tropical-cyan animate-glow-pulse" />
             </Link>
             <div className="flex items-center gap-4">
-              <nav className="hidden md:flex items-center space-x-6">
+              <nav className="items-center hidden space-x-6 md:flex">
                 {slides.map((s) => (
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="nav-link text-xs"
+                    className="text-xs nav-link"
                   >
                     {s.title}
                   </Link>
@@ -95,8 +95,8 @@ export default function Home() {
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 hover:border-tropical-cyan/50 hover:shadow-glow-cyan group"
                 aria-label={lang === "fr" ? "Switch to English" : "Passer en Français"}
               >
-                <span className="text-tropical-cyan group-hover:scale-110 transition-transform">🌐</span>
-                <span className="text-gray-300 group-hover:text-white transition-colors">
+                <span className="transition-transform text-tropical-cyan group-hover:scale-110">🌐</span>
+                <span className="text-gray-300 transition-colors group-hover:text-white">
                   {t("langSwitch")}
                 </span>
               </button>
@@ -117,19 +117,19 @@ export default function Home() {
           {slides.map((slide, i) => (
             <SwiperSlide key={i}>
               <div
-                className="relative flex items-center justify-center h-screen bg-cover bg-center"
+                className="relative flex items-center justify-center h-screen bg-center bg-cover"
                 style={{ backgroundImage: `url('${slide.image}')` }}
               >
                 {/* Dark tropical overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark via-tropical-dark/70 to-tropical-dark/40" />
 
                 {/* Content */}
-                <div className="relative z-10 text-center px-4">
+                <div className="relative z-10 px-4 text-center">
                   <div className="animate-fade-in-up">
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+                    <h1 className="mb-4 text-5xl font-bold tracking-tight text-white md:text-7xl">
                       {slide.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-300 mb-8 font-light tracking-wide">
+                    <p className="mb-8 text-lg font-light tracking-wide text-gray-300 md:text-xl">
                       {slide.subtitle}
                     </p>
                     <Link href={slide.href}>
@@ -148,8 +148,8 @@ export default function Home() {
         </Swiper>
 
         {/* Bottom scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 animate-bounce-subtle">
-          <div className="flex flex-col items-center text-gray-500 text-xs">
+        <div className="absolute z-50 -translate-x-1/2 bottom-8 left-1/2 animate-bounce-subtle">
+          <div className="flex flex-col items-center text-xs text-gray-500">
             <span className="mb-2 uppercase tracking-widest text-[10px]">{t("home.swipe")}</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />

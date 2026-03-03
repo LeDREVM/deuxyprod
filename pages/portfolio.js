@@ -9,82 +9,20 @@ import Head from "next/head";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
 
+import { photos as allPhotos } from "../data/photos";
+
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { t } = useLanguage();
 
-  const photos = [
-    {
-      src: "/photo/20240111-IMG_9907.jpg",
-      title: "Studio Session",
-      date: "11 Janvier 2024",
-      description: "Création musicale en studio - L'art de la production",
-      location: "Studio d'enregistrement"
-    },
-    {
-      src: "/photo/20240106-IMG_9743.jpg",
-      title: "Street Portrait",
-      date: "06 Janvier 2024",
-      description: "Portrait urbain - L'authenticité dans la rue",
-      location: "Environnement urbain"
-    },
-    {
-      src: "/photo/20240318-IMG_0949.jpg",
-      title: "Urban Lifestyle",
-      date: "18 Mars 2024",
-      description: "Lifestyle urbain - La culture de la rue",
-      location: "Espace public"
-    },
-    {
-      src: "/photo/20231029-IMG_8587.jpg",
-      title: "Session Octobre",
-      date: "29 Octobre 2023",
-      description: "Capture artistique - L'essence du moment",
-      location: "Extérieur"
-    },
-    {
-      src: "/photo/20240106-IMG_9753.jpg",
-      title: "Street Session",
-      date: "06 Janvier 2024",
-      description: "Ambiance urbaine - La rue comme toile de fond",
-      location: "Environnement urbain"
-    },
-    {
-      src: "/photo/20240107-IMG_9789.jpg",
-      title: "Urban Vibes",
-      date: "07 Janvier 2024",
-      description: "L'énergie de la ville capturée",
-      location: "Environnement urbain"
-    },
-    {
-      src: "/photo/IMG_8396.JPG",
-      title: "Artistic Shot",
-      date: "2023",
-      description: "Capture artistique - Vision créative",
-      location: "Studio"
-    },
-    {
-      src: "/photo/IMG_8400.JPG",
-      title: "Creative Portrait",
-      date: "2023",
-      description: "Portrait créatif - L'art du cadrage",
-      location: "Studio"
-    },
-    {
-      src: "/photo/IMG_7681.jpg",
-      title: "Creative Session",
-      date: "2024",
-      description: "Session créative - Exploration artistique",
-      location: "Studio"
-    },
-    {
-      src: "/photo/IMG_8321.jpg",
-      title: "Portrait Study",
-      date: "2024",
-      description: "Etude de portrait - Capturer l'essence",
-      location: "Studio"
-    }
-  ];
+  // only keep the minimal fields used by this slideshow
+  const photos = allPhotos.map(({ src, title, date, description, location }) => ({
+    src,
+    title,
+    date,
+    description,
+    location,
+  }));
 
   return (
     <>

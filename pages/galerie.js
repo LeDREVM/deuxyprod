@@ -3,6 +3,9 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { useLanguage } from "../context/LanguageContext";
 
+import { photos } from "../data/photos";
+import { artists, playlists } from "../data/videos";
+
 export default function Galerie() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [filter, setFilter] = useState("all");
@@ -11,100 +14,40 @@ export default function Galerie() {
 
   const media = [
     // === PHOTOS ===
-    {
-      id: 1,
+    ...photos.map(p => ({
+      ...p,
       type: "photo",
-      src: "/photo/20240111-IMG_9907.jpg",
-      title: "Studio Session",
-      date: "11 Janvier 2024",
-      description: "Création musicale en studio - L'art de la production",
-      location: "Studio d'enregistrement",
-      category: "studio",
-      tags: ["Studio", "Musique", "Production"]
-    },
-    {
-      id: 2,
-      type: "photo",
-      src: "/photo/20240106-IMG_9743.jpg",
-      title: "Street Portrait",
-      date: "06 Janvier 2024",
-      description: "Portrait urbain - L'authenticité dans la rue",
-      location: "Environnement urbain",
-      category: "portrait",
-      tags: ["Portrait", "Street", "Urbain"]
-    },
-    {
-      id: 3,
-      type: "photo",
-      src: "/photo/20240318-IMG_0949.jpg",
-      title: "Urban Lifestyle",
-      date: "18 Mars 2024",
-      description: "Lifestyle urbain - La culture de la rue",
-      location: "Espace public",
-      category: "lifestyle",
-      tags: ["Lifestyle", "Culture", "Street"]
-    },
-    {
-      id: 4,
-      type: "photo",
-      src: "/photo/20231029-IMG_8587.jpg",
-      title: "Session Octobre",
-      date: "29 Octobre 2023",
-      description: "Capture artistique - L'essence du moment",
-      location: "Extérieur",
-      category: "lifestyle",
-      tags: ["Lifestyle", "Artistique", "Automne"]
-    },
-    {
-      id: 5,
-      type: "photo",
-      src: "/photo/20240106-IMG_9753.jpg",
-      title: "Street Session",
-      date: "06 Janvier 2024",
-      description: "Ambiance urbaine - La rue comme toile de fond",
-      location: "Environnement urbain",
-      category: "portrait",
-      tags: ["Portrait", "Street", "Urbain"]
-    },
-    {
-      id: 6,
-      type: "photo",
-      src: "/photo/20240107-IMG_9789.jpg",
-      title: "Urban Vibes",
-      date: "07 Janvier 2024",
-      description: "L'énergie de la ville capturée",
-      location: "Environnement urbain",
-      category: "portrait",
-      tags: ["Portrait", "Urban", "Vibes"]
-    },
-    {
-      id: 7,
-      type: "photo",
-      src: "/photo/IMG_8396.JPG",
-      title: "Artistic Shot",
-      date: "2023",
-      description: "Capture artistique - Vision créative",
-      location: "Studio",
-      category: "studio",
-      tags: ["Studio", "Artistique", "Création"]
-    },
-    {
-      id: 8,
-      type: "photo",
-      src: "/photo/IMG_8400.JPG",
-      title: "Creative Portrait",
-      date: "2023",
-      description: "Portrait créatif - L'art du cadrage",
-      location: "Studio",
-      category: "studio",
-      tags: ["Studio", "Portrait", "Créatif"]
-    },
+    })),
 
-    { id: 9, type: "photo", src: "/photo/IMG_7681.jpg", title: "Creative Session", date: "2024", description: "Session créative - Exploration artistique", location: "Studio", category: "studio", tags: ["Studio", "Créatif", "Session"] },
-    { id: 10, type: "photo", src: "/photo/IMG_8321.jpg", title: "Portrait Study", date: "2024", description: "Etude de portrait - Capturer l'essence", location: "Studio", category: "portrait", tags: ["Portrait", "Etude", "Créatif"] },
     // === VIDÉOS ===
+    ...artists.flatMap(a =>
+      a.videos.map(v => ({
+        id: v.id,
+        type: "video",
+        src: `/video/${v.id}.mp4`, // if local videos follow this pattern, adjust as needed
+        title: v.title,
+        date: "2024",
+        description: "",
+        location: "",
+        category: "video",
+        tags: ["Vidéo"],
+      }))
+    ),
+    ...playlists.flatMap(pl =>
+      pl.videos.map(v => ({
+        id: v.id,
+        type: "video",
+        src: `/video/${v.id}.mp4`,
+        title: v.title,
+        date: "",
+        description: v.description || "",
+        location: "",
+        category: "video",
+        tags: ["Vidéo"],
+      }))
+    ),
     {
-      id: 9,
+      id: "manual-1",
       type: "video",
       src: "/video/video_1_7f880a3118bf43d9b7bd5f71705749ba.mp4",
       title: "Behind The Scenes #1",
@@ -115,7 +58,7 @@ export default function Galerie() {
       tags: ["Vidéo", "BTS", "Production"]
     },
     {
-      id: 10,
+      id: "manual-2",
       type: "video",
       src: "/video/video_1_958cfa975feb4e529520339adeec186b.mp4",
       title: "Behind The Scenes #2",
@@ -126,7 +69,7 @@ export default function Galerie() {
       tags: ["Vidéo", "BTS", "Production"]
     },
     {
-      id: 11,
+      id: "manual-3",
       type: "video",
       src: "/video/video_1_a47edae80c094eb98f204890c674100d.mp4",
       title: "Behind The Scenes #3",

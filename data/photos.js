@@ -4,7 +4,7 @@
 export const photos = [
   {
     id: 1,
-    src: "/photo/20240111-IMG_9907.jpg",
+    src: "/photo/by-ledrevm/20240111-IMG_9907.jpg",
     title: "Studio Session",
     date: "11 Janvier 2024",
     description: "Création musicale en studio - L'art de la production",
@@ -19,7 +19,7 @@ export const photos = [
   },
   {
     id: 2,
-    src: "/photo/20240106-IMG_9743.jpg",
+    src: "/photo/by-ledrevm/20240106-IMG_9743.jpg",
     title: "Street Portrait",
     date: "06 Janvier 2024",
     description: "Portrait urbain - L'authenticité dans la rue",
@@ -34,7 +34,7 @@ export const photos = [
   },
   {
     id: 3,
-    src: "/photo/20240318-IMG_0949.jpg",
+    src: "/photo/by-ledrevm/20240318-IMG_0949.jpg",
     title: "Urban Lifestyle",
     date: "18 Mars 2024",
     description: "Lifestyle urbain - La culture de la rue",
@@ -49,7 +49,7 @@ export const photos = [
   },
   {
     id: 4,
-    src: "/photo/20231029-IMG_8587.jpg",
+    src: "/photo/by-ledrevm/20231029-IMG_8587.jpg",
     title: "Session Octobre",
     date: "29 Octobre 2023",
     description: "Capture artistique - L'essence du moment",
@@ -62,7 +62,7 @@ export const photos = [
   },
   {
     id: 5,
-    src: "/photo/20240106-IMG_9753.jpg",
+    src: "/photo/by-ledrevm/20240106-IMG_9753.jpg",
     title: "Street Session",
     date: "06 Janvier 2024",
     description: "Ambiance urbaine - La rue comme toile de fond",
@@ -75,7 +75,7 @@ export const photos = [
   },
   {
     id: 6,
-    src: "/photo/20240107-IMG_9789.jpg",
+    src: "/photo/by-ledrevm/20240107-IMG_9789.jpg",
     title: "Urban Vibes",
     date: "07 Janvier 2024",
     description: "L'énergie de la ville capturée",
@@ -88,7 +88,7 @@ export const photos = [
   },
   {
     id: 7,
-    src: "/photo/IMG_8396.JPG",
+    src: "/photo/by-ledrevm/IMG_8396.jpg",
     title: "Artistic Shot",
     date: "2023",
     description: "Capture artistique - Vision créative",
@@ -101,7 +101,7 @@ export const photos = [
   },
   {
     id: 8,
-    src: "/photo/IMG_8400.JPG",
+    src: "/photo/by-ledrevm/IMG_8400.jpg",
     title: "Creative Portrait",
     date: "2023",
     description: "Portrait créatif - L'art du cadrage",
@@ -115,7 +115,7 @@ export const photos = [
   // nouvelles photos ajoutées automatiquement
   {
     id: 9,
-    src: "/photo/IMG_7681.jpg",
+    src: "/photo/by-ledrevm/IMG_7681.jpg",
     title: "Photo 7681",
     date: "2024",
     description: "Description à ajouter",
@@ -128,7 +128,7 @@ export const photos = [
   },
   {
     id: 10,
-    src: "/photo/IMG_8321.jpg",
+    src: "/photo/by-ledrevm/IMG_8321.jpg",
     title: "Photo 8321",
     date: "2024",
     description: "Description à ajouter",
