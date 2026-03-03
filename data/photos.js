@@ -111,6 +111,33 @@ export const photos = [
     tags: ["Studio", "Portrait", "Créatif"],
     featured: false,
     orientation: "portrait"
+  },
+  // nouvelles photos ajoutées automatiquement
+  {
+    id: 9,
+    src: "/photo/IMG_7681.jpg",
+    title: "Photo 7681",
+    date: "2024",
+    description: "Description à ajouter",
+    location: "Localisation à préciser",
+    category: "studio",
+    camera: "Appareil argentique",
+    tags: [],
+    featured: false,
+    orientation: "landscape"
+  },
+  {
+    id: 10,
+    src: "/photo/IMG_8321.jpg",
+    title: "Photo 8321",
+    date: "2024",
+    description: "Description à ajouter",
+    location: "Localisation à préciser",
+    category: "studio",
+    camera: "Appareil argentique",
+    tags: [],
+    featured: false,
+    orientation: "landscape"
   }
 ];
 
