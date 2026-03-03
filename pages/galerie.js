@@ -22,32 +22,9 @@ export default function Galerie() {
       })),
 
     // === VIDÉOS ===
-    ...artists.flatMap(a =>
-      a.videos.map(v => ({
-        id: v.id,
-        type: "video",
-        src: `/video/${v.id}.mp4`, // if local videos follow this pattern, adjust as needed
-        title: v.title,
-        date: "2024",
-        description: "",
-        location: "",
-        category: "video",
-        tags: ["Vidéo"],
-      }))
-    ),
-    ...playlists.flatMap(pl =>
-      pl.videos.map(v => ({
-        id: v.id,
-        type: "video",
-        src: `/video/${v.id}.mp4`,
-        title: v.title,
-        date: "",
-        description: v.description || "",
-        location: "",
-        category: "video",
-        tags: ["Vidéo"],
-      }))
-    ),
+    // Note: We intentionally DO NOT include YouTube/remote videos (from
+    // `artists` / `playlists`) in this gallery. Those remain surfaced on the
+    // creations page. Only local video files should be listed here.
     {
       id: "manual-1",
       type: "video",
