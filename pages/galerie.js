@@ -106,6 +106,9 @@ export default function Galerie() {
     ? media
     : media.filter(item => item.category === filter);
 
+  // debug output: log all media items (not data.items which doesn't exist)
+  console.log('galerie items:', JSON.stringify(media, null, 2));
+
   const openLightbox = (item) => {
     setSelectedItem(item);
     document.body.style.overflow = 'hidden';
