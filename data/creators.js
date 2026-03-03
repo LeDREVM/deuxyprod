@@ -52,7 +52,7 @@ export const creators = [
       "Expert en culture urbaine et street art"
     ],
     socials: {
-      instagram: "https://instagram.com/ledrevm",
+      instagram: "https://instagram.com/ledrevmreal",
       email: "longvichy@gmail.com",
       website: null
     },

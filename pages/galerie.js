@@ -136,7 +136,8 @@ export default function Galerie() {
     {
       id: 12,
       type: "video",
-      src: "/video/PURPLEHAZEBEATZ Visual effect by @LEDREVM.Mp4",
+      // renamed file to avoid spaces/case sensitivity issues
+      src: "/video/purplehazebeatz.mp4",
       title: "PURPLEHAZEBEATZ - Visual Effect",
       date: "2024",
       description: "Effets visuels par @LEDREVM - Purple Haze Beatz",
@@ -144,6 +145,7 @@ export default function Galerie() {
       category: "video",
       tags: ["Vidéo", "Visual", "PURPLEHAZEBEATZ"]
     },
+
   ];
 
   const categories = [
@@ -186,20 +188,20 @@ export default function Galerie() {
         <meta name="description" content={t("galerie.metaDesc")} />
       </Head>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="mb-12 text-center animate-fade-in-up">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">
             <span className="text-gradient-tropical">{t("galerie.title")}</span>
           </h1>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="max-w-xl mx-auto text-gray-400">
             {t("galerie.subtitle")}
           </p>
         </div>
 
         {/* Filtres */}
         <div className="flex justify-center mb-10">
-          <div className="glass-card inline-flex p-1 gap-1 flex-wrap justify-center">
+          <div className="inline-flex flex-wrap justify-center gap-1 p-1 glass-card">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -218,11 +220,11 @@ export default function Galerie() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-1 gap-5 mb-12 md:grid-cols-2 lg:grid-cols-3">
           {filteredMedia.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer glass-card p-0 border-tropical-cyan/5"
+              className="relative p-0 overflow-hidden cursor-pointer group rounded-2xl glass-card border-tropical-cyan/5"
               onClick={() => openLightbox(item)}
             >
               <div className={`relative ${item.type === "video" ? "aspect-video" : "aspect-[4/5]"} overflow-hidden rounded-2xl`}>
@@ -232,7 +234,7 @@ export default function Galerie() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                     onMouseEnter={(e) => e.target.play()}
                     onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
                   />
@@ -240,15 +242,15 @@ export default function Galerie() {
                   <img
                     src={item.src}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   />
                 )}
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-tropical-dark/95 via-tropical-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                  <h3 className="text-white text-xl font-bold mb-1 glow-text-cyan">
+                <div className="absolute inset-0 flex flex-col justify-end p-5 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-tropical-dark/95 via-tropical-dark/30 to-transparent group-hover:opacity-100">
+                  <h3 className="mb-1 text-xl font-bold text-white glow-text-cyan">
                     {item.title}
                   </h3>
-                  <p className="text-gray-300 text-xs mb-2">{item.description}</p>
+                  <p className="mb-2 text-xs text-gray-300">{item.description}</p>
                   <div className="flex items-center text-tropical-cyan/60 text-[10px]">
                     <span>{item.date}</span>
                     <span className="mx-2">•</span>
@@ -258,8 +260,8 @@ export default function Galerie() {
 
                 {/* Play icon for videos */}
                 {item.type === "video" && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity duration-300">
-                    <div className="w-14 h-14 rounded-full bg-tropical-dark/60 backdrop-blur-sm flex items-center justify-center border border-tropical-cyan/20">
+                  <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none group-hover:opacity-0">
+                    <div className="flex items-center justify-center border rounded-full w-14 h-14 bg-tropical-dark/60 backdrop-blur-sm border-tropical-cyan/20">
                       <svg className="w-6 h-6 text-tropical-cyan ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -281,20 +283,20 @@ export default function Galerie() {
         </div>
 
         {filteredMedia.length === 0 && (
-          <div className="text-center py-20">
+          <div className="py-20 text-center">
             <p className="text-gray-500">{t("galerie.noPhotos")}</p>
           </div>
         )}
 
         {/* Liens vers autres vues */}
         <div className="flex justify-center gap-3 mb-12">
-          <a href="/portfolio" className="btn-neon btn-neon-cyan text-xs px-5 py-2">
+          <a href="/portfolio" className="px-5 py-2 text-xs btn-neon btn-neon-cyan">
             {t("galerie.viewSlides")}
           </a>
-          <a href="/portfolio-fullscreen" className="btn-neon btn-neon-purple text-xs px-5 py-2">
+          <a href="/portfolio-fullscreen" className="px-5 py-2 text-xs btn-neon btn-neon-purple">
             {t("galerie.viewFullscreen")}
           </a>
-          <a href="/creations" className="btn-neon btn-neon-magenta text-xs px-5 py-2">
+          <a href="/creations" className="px-5 py-2 text-xs btn-neon btn-neon-magenta">
             {t("galerie.viewCreations")}
           </a>
         </div>
@@ -303,11 +305,11 @@ export default function Galerie() {
       {/* Lightbox */}
       {selectedItem && (
         <div
-          className="fixed inset-0 bg-tropical-dark/95 lightbox-backdrop z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-tropical-dark/95 lightbox-backdrop"
           onClick={closeLightbox}
         >
           <button
-            className="absolute top-5 right-5 text-gray-400 hover:text-tropical-cyan transition z-50 p-2"
+            className="absolute z-50 p-2 text-gray-400 transition top-5 right-5 hover:text-tropical-cyan"
             onClick={closeLightbox}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -316,7 +318,7 @@ export default function Galerie() {
           </button>
 
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-tropical-cyan transition z-50 p-2"
+            className="absolute z-50 p-2 text-gray-400 transition -translate-y-1/2 left-4 top-1/2 hover:text-tropical-cyan"
             onClick={(e) => { e.stopPropagation(); navigateLightbox('prev'); }}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -325,7 +327,7 @@ export default function Galerie() {
           </button>
 
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-tropical-cyan transition z-50 p-2"
+            className="absolute z-50 p-2 text-gray-400 transition -translate-y-1/2 right-4 top-1/2 hover:text-tropical-cyan"
             onClick={(e) => { e.stopPropagation(); navigateLightbox('next'); }}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -334,7 +336,7 @@ export default function Galerie() {
           </button>
 
           <div
-            className="max-w-6xl w-full mx-auto px-6 flex flex-col md:flex-row items-center gap-8"
+            className="flex flex-col items-center w-full max-w-6xl gap-8 px-6 mx-auto md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex-1 relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center">
@@ -351,15 +353,15 @@ export default function Galerie() {
                 <img
                   src={selectedItem.src}
                   alt={selectedItem.title}
-                  className="max-w-full max-h-full object-contain rounded-lg"
+                  className="object-contain max-w-full max-h-full rounded-lg"
                 />
               )}
             </div>
 
-            <div className="w-full md:w-72 text-white space-y-4">
-              <div className="text-xs text-tropical-cyan/60 uppercase tracking-widest">{selectedItem.date}</div>
+            <div className="w-full space-y-4 text-white md:w-72">
+              <div className="text-xs tracking-widest uppercase text-tropical-cyan/60">{selectedItem.date}</div>
               <h2 className="text-2xl font-bold glow-text-cyan">{selectedItem.title}</h2>
-              <p className="text-gray-400 text-sm">{selectedItem.description}</p>
+              <p className="text-sm text-gray-400">{selectedItem.description}</p>
 
               <div className="space-y-2 text-xs text-gray-500">
                 <div className="flex items-center gap-2">
