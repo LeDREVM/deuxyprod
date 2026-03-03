@@ -14,7 +14,7 @@ export default function Galerie() {
 
   const media = [
     // === PHOTOS ===
-    ...photos.map(p => ({
+    ...photos.filter(Boolean).map(p => ({
       ...p,
       type: "photo",
     })),
@@ -105,9 +105,6 @@ export default function Galerie() {
   const filteredMedia = filter === "all"
     ? media
     : media.filter(item => item.category === filter);
-
-  // debug output: log all media items (not data.items which doesn't exist)
-  console.log('galerie items:', JSON.stringify(media, null, 2));
 
   const openLightbox = (item) => {
     setSelectedItem(item);
